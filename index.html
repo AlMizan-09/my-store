@@ -41,6 +41,20 @@
         .contact-form button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
 
         footer { padding: 30px; text-align: center; background: #2c3e50; color: white; }
+        .qr-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 2px dashed #25D366;
+    text-align: center;
+}
+.qr-container img {
+    width: 200px; /* QR ka size yahan se chota-bada kar sakte hain */
+    height: auto;
+    border-radius: 10px;
+    margin: 10px 0;
+}
     </style>
 </head>
 <body>
@@ -96,6 +110,11 @@
             <input type="text" id="name" placeholder="Your Name">
             <textarea id="msg" rows="4" placeholder="Which product do you want to buy?"></textarea>
             <button type="button" onclick="sendToWhatsapp()">Send Message to ZS Creations</button>
+            <div class="qr-container">
+    <p style="font-weight: bold; color: #333; margin-bottom: 5px;">Scan to Pay Online (UPI)</p>
+    <img src="qr-code.jpg" alt="UPI QR Code">
+    <p style="font-size: 13px; color: #666;">After payment, please share the screenshot on WhatsApp.</p>
+</div>
         </div>
     </div>
 
