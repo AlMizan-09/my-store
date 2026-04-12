@@ -3,39 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Product Store</title>
+    <title>My Professional Portfolio</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        header { background: #333; color: #fff; padding: 1rem; text-align: center; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
-        .card { background: #fff; margin: 10px; padding: 15px; width: 250px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
-        .card img { max-width: 100%; border-radius: 5px; height: 200px; object-fit: cover; }
-        .card h3 { font-size: 1.2rem; margin: 10px 0; }
-        .price { color: #27ae60; font-weight: bold; font-size: 1.1rem; }
-        .buy-btn { display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        /* Modern Design Settings */
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fcfcfc; color: #333; line-height: 1.6; }
+        
+        /* Navbar */
+        nav { display: flex; justify-content: space-around; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: #444; font-weight: 600; font-size: 1.1rem; }
+        nav a:hover { color: #d4a373; }
+
+        /* Hero Section */
+        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200'); background-size: cover; background-position: center; }
+        .hero h1 { font-size: 3.5rem; margin: 0; color: #2c3e50; }
+        .hero p { font-size: 1.2rem; color: #7f8c8d; margin-top: 10px; }
+
+        /* Categories Section */
+        .section-title { text-align: center; margin: 60px 0 30px; font-size: 2rem; color: #2c3e50; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+        .card:hover { transform: scale(1.03); }
+        .card img { width: 100%; height: 250px; object-fit: cover; }
+        .card-content { padding: 20px; text-align: center; }
+
+        /* Contact Form Section */
+        .contact-section { background: #f8f1e7; padding: 80px 20px; margin-top: 60px; }
+        .contact-form { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        .contact-form button { width: 100%; padding: 15px; background: #d4a373; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .contact-form button:hover { background: #bc8a5f; }
+
+        footer { padding: 40px; text-align: center; background: #2c3e50; color: white; margin-top: 0; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Welcome to My Store</h1>
-</header>
+    <nav>
+        <div style="font-size: 1.5rem; font-weight: bold; color: #d4a373;">AL MIZAN</div>
+        <div>
+            <a href="#work">My Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-<div class="container">
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="Product 1">
-        <h3>Product Ka Naam</h3>
-        <p class="price">₹499</p>
-        <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe Product 1 chahiye" class="buy-btn">WhatsApp Order</a>
+    <div class="hero">
+        <h1>Welcome to My Creation</h1>
+        <p>I build digital experiences that matter.</p>
     </div>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="Product 2">
-        <h3>Product Ka Naam</h3>
-        <p class="price">₹799</p>
-        <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe Product 2 chahiye" class="buy-btn">WhatsApp Order</a>
+    <h2 id="work" class="section-title">Explore Categories</h2>
+    <div class="container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="Tech">
+            <div class="card-content">
+                <h3>Web Development</h3>
+                <p>Modern and responsive websites.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=500" alt="Design">
+            <div class="card-content">
+                <h3>Creative Design</h3>
+                <p>Beautiful UI/UX for better interaction.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="Analysis">
+            <div class="card-content">
+                <h3>Data Analysis</h3>
+                <p>Turning data into meaningful insights.</p>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div id="contact" class="contact-section">
+        <h2 class="section-title" style="margin-top: 0;">Get In Touch</h2>
+        <div class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="button">Send Message</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Al Mizan. All rights reserved.</p>
+        <p style="font-size: 0.8rem; color: #bdc3c7;">Built with HTML & CSS on GitHub</p>
+    </footer>
 
 </body>
 </html>
