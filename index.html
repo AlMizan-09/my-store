@@ -8,171 +8,142 @@
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
         
-        nav { display: flex; justify-content: space-around; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        nav a { text-decoration: none; color: #444; font-weight: 600; }
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        nav a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        .hero { padding: 80px 20px; text-align: center; background: #fdf8f3; }
-        .hero h1 { font-size: 2.5rem; color: #2c3e50; }
-
-        .section-title { text-align: center; margin: 50px 0 30px; font-size: 2rem; }
-        
-        .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-        }
-        
-        .card { position: relative; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
-        .card img { width: 100%; height: 280px; object-fit: cover; transition: 0.5s; }
-        
-        /* PRICE TAG FIX: Ab price hamesha dikhega */
-        .price-overlay {
-            position: absolute; 
-            top: 15px; 
-            left: 15px; 
-            background: rgba(0, 0, 0, 0.7); 
+        /* Hero Slider Section */
+        .hero { 
+            padding: 100px 20px; 
+            text-align: center; 
+            position: relative;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            z-index: 5;
-            display: block; /* Pehle flex/center tha, ab block display */
         }
-        
-        .price-text { font-size: 1.1rem; }
-        
-        .card:hover img { transform: scale(1.05); }
+        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
+        .hero h1, .hero p, .hero .view-btn { position: relative; z-index: 2; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .view-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
 
-        .card-content { padding: 15px; text-align: center; }
+        /* Category Grid (Collage) */
+        .category-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        .collage-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; height: 280px; }
+        .collage-grid img { width: 100%; height: 100%; object-fit: cover; }
+        .category-name { padding: 15px; font-size: 1.2rem; font-weight: bold; color: #800080; }
 
-        .contact-section { background: #f8f1e7; padding: 60px 20px; text-align: center; }
+        /* Product Cards */
+        .section-title { text-align: center; margin: 50px 0 30px; font-size: 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #ff00ff; border-radius: 15px; overflow: hidden; padding: 20px; text-align: center; color: black; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
+        
+        /* QTY and Buttons */
+        .qty-container { margin: 15px 0; }
+        .qty-input { width: 50px; padding: 5px; text-align: center; border-radius: 4px; border: 1px solid #ddd; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .btn-group button { padding: 10px 15px; border: none; border-radius: 5px; background: #28a745; color: white; font-weight: bold; cursor: pointer; }
+
+        .contact-section { background: #f8f1e7; padding: 60px 20px; text-align: center; margin-top: 50px; }
         .contact-form { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; }
         .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        .contact-form button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
-
-        .qr-container {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border: 2px dashed #25D366;
-            text-align: center;
-        }
-        .qr-container img { width: 200px; height: auto; border-radius: 10px; margin: 10px 0; }
-
+        
+        .qr-container img { width: 200px; border-radius: 10px; margin-top: 10px; }
         footer { padding: 30px; text-align: center; background: #2c3e50; color: white; }
     </style>
 </head>
 <body>
 
-   <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
-    <div style="font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px;">ZS CREATIONS</div>
-    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-        <a href="#products" style="text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Collection</a>
-        <a href="#contact" style="text-decoration: none; color: #888; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Contact</a>
-    </div>
-</nav>
-    <div class="hero">
+    <nav>
+        <div style="font-size: 1.4rem; font-weight: 800; color: #d4a373;">ZS CREATIONS</div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+            <a href="#products">Collection</a>
+            <a href="#contact" style="color: #888;">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero" id="hero-slider">
         <h1>Exclusive Collection</h1>
         <p>Browse my creations and tell me what you love.</p>
-        <a href="#products" style="display: inline-block; margin-top: 25px; padding: 14px 35px; background: #000; color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; border-radius: 2px; text-transform: uppercase; letter-spacing: 2px;">View Shop</a>
+        <a href="#products" class="view-btn">View Shop</a>
+    </div>
+
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-container">
+        <div class="category-card">
+            <div class="collage-grid">
+                <img src="zahida.1.jpeg"><img src="zahida.2.jpeg"><img src="zahida.3.jpeg"><img src="zahida.4.jpeg">
+            </div>
+            <div class="category-name">Quran Rehal</div>
+        </div>
+        <div class="category-card">
+            <div class="collage-grid">
+                <img src="zahida.5.jpeg"><img src="zahida.6.jpeg"><img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
+            </div>
+            <div class="category-name">Bookmarks</div>
+        </div>
     </div>
 
     <h2 id="products" class="section-title">Our Products</h2>
-    
     <div class="container">
-        
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹1,499</span></div>
-            <img src="zahida.1.jpeg" alt="Product 1">
-            <div class="card-content">
-                <h3>Nikah-Nama Box</h3>
-                <p>Made for your blessed union</p>
+        <div class="card">
+            <img src="zahida.3.jpeg" alt="Keychain">
+            <h3>ZS Keychain</h3>
+            <p style="font-size: 1.2rem; font-weight: bold;">₹199</p>
+            <div class="qty-container">
+                QTY: <input type="number" class="qty-input" id="qty-keychain" value="1" min="1">
+            </div>
+            <div class="btn-group">
+                <button onclick="alert('Added to Cart')">Add to Cart</button>
+                <button onclick="sendToWhatsapp('ZS Keychain', 'qty-keychain')">Order</button>
             </div>
         </div>
-
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹699</span></div>
-            <img src="zahida.2.jpeg" alt="Product 2">
-            <div class="card-content">
-                <h3>Nikah Mirror</h3>
-                <p>Reflecting love and elegance</p>
-            </div>
-        </div>
-
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹199</span></div>
-            <img src="zahida.3.jpeg" alt="Product 3">
-            <div class="card-content">
-                <h3>Keychain</h3>
-                <p>Carry your memories everywhere</p>
-            </div>
         </div> 
-
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹1,699</span></div>
-            <img src="zahida.4.jpeg" alt="Product 4">
-            <div class="card-content">
-                <h3>Nikah Prayer Mats</h3>
-                <p>Made for Dua</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹699</span></div>
-            <img src="zahida.5.jpeg" alt="Product 5">
-            <div class="card-content">
-                <h3>Resin Black Rahel</h3>
-                <p>Beautifully crafted for sacred moments</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹499</span></div>
-            <img src="zahida.6.jpeg" alt="Product 6">
-            <div class="card-content">
-                <h3>Resin Coaster</h3>
-                <p>Style and protection for your space</p>
-            </div>
-        </div>
-
-    </div> 
 
     <div id="contact" class="contact-section">
         <h2>Order on WhatsApp</h2>
         <div class="contact-form">
             <input type="text" id="name" placeholder="Your Name">
-            <textarea id="msg" rows="4" placeholder="Which product do you want to buy?"></textarea>
-            <button type="button" onclick="sendToWhatsapp()">Send Message to ZS Creations</button>
-            
+            <textarea id="msg" rows="4" placeholder="Specific requirements?"></textarea>
+            <button type="button" onclick="sendToWhatsapp('General', 'qty-keychain')" style="width:100%; padding:15px; background:#25D366; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Send Message</button>
             <div class="qr-container">
-                <p style="font-weight: bold; color: #333; margin-bottom: 5px;">Scan to Pay Online (UPI)</p>
-                <img src="mizan.qr.2.jpeg" alt="UPI QR Code">
-                <p style="font-size: 13px; color: #666;">After payment, please share the screenshot on WhatsApp.</p>
+                <p>Scan to Pay Online (UPI)</p>
+                <img src="mizan.qr.2.jpeg" alt="QR Code">
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 ZS Creations</p>
-    </footer>
+    <footer><p>&copy; 2026 ZS Creations</p></footer>
 
     <script>
-        function sendToWhatsapp() {
-            let name = document.getElementById('name').value;
+        // 1. Hero Background Slider
+        const images = ['zahida.1.jpeg', 'zahida.2.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
+        let currentIndex = 0;
+        const hero = document.getElementById('hero-slider');
+        function changeBG() {
+            hero.style.backgroundImage = `url('${images[currentIndex]}')`;
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+        setInterval(changeBG, 3000);
+        changeBG();
+
+        // 2. WhatsApp with Quantity
+        function sendToWhatsapp(productName, qtyId) {
+            let name = document.getElementById('name').value || "Customer";
             let msg = document.getElementById('msg').value;
+            let qty = document.getElementById(qtyId) ? document.getElementById(qtyId).value : 1;
             let number = "917478471531"; 
 
-            let url = "https://wa.me/" + number + "?text=" 
-                + "Name: " + name + "%0a" 
-                + "Message: " + msg;
-
-            window.open(url, '_blank').focus();
+            let text = `Hello ZS Creations,%0aName: ${name}%0aProduct: ${productName}%0aQuantity: ${qty}%0aMessage: ${msg}`;
+            window.open(`https://wa.me/${number}?text=${text}`, '_blank').focus();
         }
     </script>
-
 </body>
 </html>
