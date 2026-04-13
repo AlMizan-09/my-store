@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Store</title>
+    <title>ZS Creations | My Professional Store</title>
     <style>
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
         
         nav { display: flex; justify-content: space-around; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        nav a { text-decoration: none; color: #444; font-weight: 600; }
+        nav a { text-decoration: none; color: #444; font-weight: 600; margin: 0 10px; }
 
         .hero { padding: 80px 20px; text-align: center; background: #fdf8f3; }
         .hero h1 { font-size: 2.5rem; color: #2c3e50; }
@@ -36,25 +36,16 @@
 
         /* Form Styling */
         .contact-section { background: #f8f1e7; padding: 60px 20px; text-align: center; }
-        .contact-form { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        .contact-form button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+        .contact-form { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        .contact-form button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .contact-form button:hover { background: #128C7E; }
 
-        footer { padding: 30px; text-align: center; background: #2c3e50; color: white; }
-        .qr-container {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    border: 2px dashed #25D366;
-    text-align: center;
-}
-.qr-container img {
-    width: 200px; /* QR ka size yahan se chota-bada kar sakte hain */
-    height: auto;
-    border-radius: 10px;
-    margin: 10px 0;
-}
+        /* QR Styling */
+        .qr-container { margin-top: 25px; padding: 15px; background: #f9f9f9; border-radius: 10px; border: 2px dashed #25D366; text-align: center; }
+        .qr-container img { width: 180px; height: auto; border-radius: 10px; margin: 10px 0; }
+
+        footer { padding: 30px; text-align: center; background: #2c3e50; color: white; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -69,80 +60,79 @@
 
     <div class="hero">
         <h1>Exclusive Collection</h1>
-        <p>.Browse my creations and tell me what you love</p>
+        <p>Browse my creations and tell me what you love.</p>
     </div>
 
     <h2 id="products" class="section-title">Our Products</h2>
+    
     <div class="container">
         
-        <div class="card" onclick="location.href='#product2'">
+        <div class="card" onclick="location.href='#contact'">
             <div class="price-overlay"><div class="price-text">₹1,499</div></div>
-            <img src="zahida.1.jpeg" alt="Product 1">
+            <img src="zahida.1.jpeg" alt="Nikah-Nama Box">
             <div class="card-content">
                 <h3>Nikah-Nama Box</h3>
                 <p>Made for your blessed union</p>
             </div>
         </div>
 
-        <div id="product2" class="card" onclick="location.href='#product3'">
+        <div class="card" onclick="location.href='#contact'">
             <div class="price-overlay"><div class="price-text">₹999</div></div>
-            <img src="zahida.2.jpeg" alt="Product 2">
+            <img src="zahida.2.jpeg" alt="Nikah Mirror">
             <div class="card-content">
                 <h3>Nikah Mirror</h3>
                 <p>Reflecting love and elegance</p>
             </div>
         </div>
 
-        <div id="product3" class="card" onclick="location.href='#contact'">
+        <div class="card" onclick="location.href='#contact'">
             <div class="price-overlay"><div class="price-text">₹199</div></div>
-            <img src="zahida.3.jpeg" alt="Product 3">
+            <img src="zahida.3.jpeg" alt="Keychain">
             <div class="card-content">
                 <h3>Keychain</h3>
                 <p>Carry your memories everywhere</p>
             </div>
+        </div>
+
+        <div class="card" onclick="location.href='#contact'">
+            <div class="price-overlay"><div class="price-text">₹1,699</div></div>
+            <img src="zahida.4.jpeg" alt="Nikah Prayer Mats">
+            <div class="card-content">
+                <h3>Nikah Prayer Mats</h3>
+                <p>Made for Dua</p>
+            </div>
+        </div>
         
-        
-        <div id="product4" class="card" onclick="location.href='#contact'">
-    <div class="price-overlay"><div class="price-text">₹1,699</div></div>
-    <img src="zahida.4.jpeg" alt="Product 4">
-    <div class="card-content">
-        <h3>Nikah Prayer Mats</h3>
-        <p>Made for Dua </p>
-    </div>
-</div>
-        
-        <div id="product5" class="card" onclick="location.href='#contact'">
+        <div class="card" onclick="location.href='#contact'">
             <div class="price-overlay"><div class="price-text">₹199</div></div>
-            <img src="zahida.5.jpeg" alt="Product 5">
+            <img src="zahida.5.jpeg" alt="Resin Black Rahel">
             <div class="card-content">
                 <h3>Resin Black Rahel</h3>
                 <p>Beautifully crafted for sacred moments</p>
             </div>
         </div>
         
-        <div id="product6" class="card" onclick="location.href='#contact'">
+        <div class="card" onclick="location.href='#contact'">
             <div class="price-overlay"><div class="price-text">₹199</div></div>
-            <img src="zahida.6.jpeg" alt="Product 6">
+            <img src="zahida.6.jpeg" alt="Resin Coaster">
             <div class="card-content">
                 <h3>Resin Coaster</h3>
                 <p>Style and protection for your space</p>
-                 </div>
             </div>
         </div>
 
-    </div>
-
-    <div id="contact" class="contact-section">
+    </div> <div id="contact" class="contact-section">
         <h2>Order on WhatsApp</h2>
         <div class="contact-form">
             <input type="text" id="name" placeholder="Your Name">
             <textarea id="msg" rows="4" placeholder="Which product do you want to buy?"></textarea>
             <button type="button" onclick="sendToWhatsapp()">Send Message to ZS Creations</button>
+            
             <div class="qr-container">
-    <p style="font-weight: bold; color: #333; margin-bottom: 5px;">Scan to Pay Online (UPI)</p>
-    <img src="mizan.qr.2.jpeg" alt="UPI QR Code">
-    <p style="font-size: 13px; color: #666;">After payment, please share the screenshot on WhatsApp.</p>
-</div>
+                <p style="font-weight: bold; color: #333; margin-bottom: 5px;">Scan to Pay Online (UPI)</p>
+                <img src="mizan.qr.2.jpeg" alt="UPI QR Code">
+                <p style="font-size: 13px; color: #666;">After payment, please share the screenshot on WhatsApp.</p>
+            </div>
         </div>
     </div>
 
@@ -154,7 +144,7 @@
         function sendToWhatsapp() {
             let name = document.getElementById('name').value;
             let msg = document.getElementById('msg').value;
-            let number = "919199079326"; // <--- YAHAN APNA WHATSAPP NUMBER LIKHEIN (91 ke saath)
+            let number = "919199079326"; 
 
             let url = "https://wa.me/" + number + "?text=" 
                 + "Name: " + name + "%0a" 
