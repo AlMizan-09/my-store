@@ -8,53 +8,123 @@
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
         
-        /* Navigation (Premium Look) */
+        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        nav .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
-        nav .links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-        nav a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
+        .nav-links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+        .nav-links a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; }
 
-        /* Automatic Hero Slider */
+        /* Hero Slider */
         .hero { 
-            padding: 100px 20px; 
-            text-align: center; 
-            position: relative;
-            min-height: 450px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 1.2s ease-in-out;
-            color: white;
+            padding: 100px 20px; text-align: center; position: relative; min-height: 450px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background-size: cover; background-position: center; transition: background-image 1s ease-in-out; color: white;
         }
-        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); z-index: 1; }
+        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
         .hero h1, .hero p, .hero .view-btn { position: relative; z-index: 2; }
-        .hero h1 { font-size: 2.8rem; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-        .view-btn { display: inline-block; margin-top: 25px; padding: 14px 35px; background: #000; color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; border-radius: 2px; text-transform: uppercase; letter-spacing: 2px; }
+        .view-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-        /* Category Grid (Collage Style) */
-        .section-title { text-align: center; margin: 60px 0 30px; font-size: 2rem; color: #2c3e50; }
-        .category-container { max-width: 1100px; margin: 0 auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eee; text-align: center; }
-        .collage-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; height: 300px; }
+        /* Category Collage */
+        .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; }
+        .category-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #fce4ec; }
+        .collage-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; height: 250px; }
         .collage-grid img { width: 100%; height: 100%; object-fit: cover; }
-        .category-name { padding: 15px; font-size: 1.2rem; font-weight: bold; color: #800080; text-transform: uppercase; letter-spacing: 1px; }
+        .cat-name { padding: 10px; text-align: center; font-weight: bold; color: #880e4f; background: #fce4ec; }
 
-        /* Product Cards (Pink Style with QTY) */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: #ff00ff; border-radius: 15px; overflow: hidden; padding: 20px; text-align: center; color: black; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-        .card img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-        .qty-container { margin: 15px 0; font-weight: bold; }
-        .qty-input { width: 60px; padding: 6px; text-align: center; border: 1px solid #ddd; border-radius: 4px; font-weight: bold; }
-        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
-        .btn-group button { flex: 1; padding: 12px 5px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .add-cart { background: #fff; color: #ff00ff; }
-        .order-now { background: #28a745; color: white; }
+        /* Pink Product Cards */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: #ff00ff; border-radius: 20px; padding: 20px; text-align: center; color: black; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
+        .qty-box { margin: 15px 0; font-weight: bold; }
+        .qty-input { width: 50px; padding: 5px; text-align: center; border-radius: 5px; border: none; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; }
+        .btn-group button { padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .btn-add { background: white; color: #ff00ff; }
+        .btn-order { background: #28a745; color: white; }
 
-        /* Contact & QR */
-        .contact-section { background: #f8f1e7; padding: 80px 20px; text-align: center; margin-top: 50px; }
-        .contact-form { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
-        .qr-container { margin-top: 25px; padding: 20px; background
+        /* Footer & QR */
+        .qr-section { background: white; padding: 30px; margin-top: 50px; text-align: center; border-top: 1px solid #eee; }
+        .qr-section img { width: 180px; margin: 10px 0; border-radius: 10px; }
+        footer { padding: 20px; text-align: center; background: #2c3e50; color: white; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">ZS CREATIONS</div>
+        <div class="nav-links">
+            <a href="#products">Collection</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero" id="hero-slider">
+        <h1>Exclusive Collection</h1>
+        <p>Browse my creations and tell me what you love.</p>
+        <a href="#products" class="view-btn">View Shop</a>
+    </div>
+
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-container">
+        <div class="category-card">
+            <div class="collage-grid">
+                <img src="zahida.1.jpeg"><img src="zahida.2.jpeg"><img src="zahida.3.jpeg"><img src="zahida.4.jpeg">
+            </div>
+            <div class="cat-name">Quran Rehal</div>
+        </div>
+        <div class="category-card">
+            <div class="collage-grid">
+                <img src="zahida.5.jpeg"><img src="zahida.6.jpeg"><img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
+            </div>
+            <div class="cat-name">Bookmarks</div>
+        </div>
+    </div>
+
+    <h2 id="products" class="section-title">Our Products</h2>
+    <div class="container">
+        <div class="card">
+            <img src="zahida.3.jpeg" alt="Keychain">
+            <h3>ZS Keychain</h3>
+            <p style="font-size: 1.2rem; font-weight: bold;">₹200</p>
+            <div class="qty-box">QTY: <input type="number" id="qty1" class="qty-input" value="1" min="1"></div>
+            <div class="btn-group">
+                <button class="btn-add" onclick="alert('Added to Cart')">Add to Cart</button>
+                <button class="btn-order" onclick="sendToWA('ZS Keychain', 'qty1')">Order</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="qr-section">
+        <h3>Order on WhatsApp</h3>
+        <p>Scan to Pay via UPI</p>
+        <img src="mizan.qr.2.jpeg" alt="QR Code">
+        <p>Send screenshot after payment</p>
+    </div>
+
+    <footer><p>&copy; 2026 ZS Creations</p></footer>
+
+    <script>
+        // Hero Slider
+        const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
+        let idx = 0;
+        function changeBG() {
+            const hero = document.getElementById('hero-slider');
+            if(hero) {
+                hero.style.backgroundImage = `url('${sliderImgs[idx]}')`;
+                idx = (idx + 1) % sliderImgs.length;
+            }
+        }
+        setInterval(changeBG, 3000);
+        changeBG();
+
+        // WhatsApp Function
+        function sendToWA(product, qtyId) {
+            let qty = document.getElementById(qtyId).value;
+            let num = "917478471531"; 
+            let url = `https://wa.me/${num}?text=Hello, I want to order ${qty} x ${product}`;
+            window.open(url, '_blank').focus();
+        }
+    </script>
+</body>
+</html>
