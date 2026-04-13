@@ -3,172 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZS Creations | Store</title>
+    <title>ZS Creations | Premium Boutique</title>
     <style>
+        /* Modern Reset & Typography */
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
-        
-        nav { display: flex; justify-content: space-around; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        nav a { text-decoration: none; color: #444; font-weight: 600; }
+        body { 
+            margin: 0; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background-color: #ffffff; 
+            color: #1a1a1a; 
+            line-height: 1.6;
+        }
 
-        .hero { padding: 80px 20px; text-align: center; background: #fdf8f3; }
-        .hero h1 { font-size: 2.5rem; color: #2c3e50; }
+        /* Navigation - ShoeTree Style (Clean & Floating) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 25px 8%; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; color: #000; text-transform: uppercase; }
+        nav .links a { text-decoration: none; color: #555; font-weight: 500; margin-left: 30px; font-size: 0.9rem; transition: 0.3s; }
+        nav .links a:hover { color: #000; }
 
-        .section-title { text-align: center; margin: 50px 0 30px; font-size: 2rem; }
-        
+        /* Hero Section */
+        .hero { 
+            padding: 120px 20px; 
+            text-align: center; 
+            background: #f9f9f9; 
+            margin-bottom: 50px;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; color: #111; }
+        .hero p { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto; }
+
+        /* Grid Container */
+        .section-title { text-align: center; margin: 80px 0 40px; font-size: 2.2rem; font-weight: 600; }
         .container { 
-            max-width: 1100px; 
+            max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 20px; 
+            padding: 0 40px; 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 40px; 
         }
-        
-        .card { position: relative; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
-        .card img { width: 100%; height: 280px; object-fit: cover; transition: 0.5s; }
-        
-        /* PRICE TAG FIX: Ab price hamesha dikhega */
-        .price-overlay {
-            position: absolute; 
-            top: 15px; 
-            left: 15px; 
-            background: rgba(0, 0, 0, 0.7); 
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            z-index: 5;
-            display: block; /* Pehle flex/center tha, ab block display */
+
+        /* Product Card - Clean Minimal Look */
+        .card { 
+            background: white; 
+            border-radius: 0px; /* ShoeTree uses sharp or very slight round edges */
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
-        .price-text { font-size: 1.1rem; }
-        
-        .card:hover img { transform: scale(1.05); }
+        .image-container { 
+            position: relative; 
+            overflow: hidden; 
+            background: #f5f5f5; 
+            aspect-ratio: 1 / 1;
+        }
+        .card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: 0.6s; 
+        }
+        .card:hover img { transform: scale(1.08); }
 
-        .card-content { padding: 15px; text-align: center; }
+        .card-content { padding: 20px 0; text-align: left; }
+        .card-content h3 { margin: 0; font-size: 1.1rem; font-weight: 600; color: #222; }
+        .card-content p { margin: 5px 0; color: #888; font-size: 0.9rem; }
+        .price { font-weight: 700; color: #000; font-size: 1.05rem; margin-top: 8px; display: block; }
 
-        .contact-section { background: #f8f1e7; padding: 60px 20px; text-align: center; }
-        .contact-form { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        .contact-form button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+        /* Contact & WhatsApp Section */
+        .contact-section { background: #fafafa; padding: 100px 20px; margin-top: 100px; }
+        .contact-form { max-width: 450px; margin: 0 auto; }
+        .contact-form input, .contact-form textarea { 
+            width: 100%; padding: 15px; margin-bottom: 20px; 
+            border: 1px solid #e1e1e1; background: #fff; border-radius: 4px; font-size: 1rem;
+        }
+        .contact-form button { 
+            width: 100%; padding: 18px; 
+            background: #000; color: white; /* Black button like premium brands */
+            border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; 
+            font-weight: 600; transition: 0.3s;
+        }
+        .contact-form button:hover { background: #333; }
 
         .qr-container {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border: 2px dashed #25D366;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #eee;
             text-align: center;
         }
-        .qr-container img { width: 200px; height: auto; border-radius: 10px; margin: 10px 0; }
+        .qr-container img { width: 150px; filter: grayscale(100%); transition: 0.3s; }
+        .qr-container img:hover { filter: grayscale(0%); }
 
-        footer { padding: 30px; text-align: center; background: #2c3e50; color: white; }
+        footer { padding: 60px; text-align: center; border-top: 1px solid #eee; color: #999; font-size: 0.8rem; letter-spacing: 1px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav { padding: 20px 5%; }
+            .links { display: none; } /* Mobile par links hide kar sakte hain ya burger menu */
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-size: 1.5rem; font-weight: bold; color: #d4a373;">ZS Creations</div>
-        <div>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
+        <div class="logo">ZS Creations</div>
+        <div class="links">
+            <a href="#products">Collection</a>
+            <a href="#contact">Inquiry</a>
         </div>
     </nav>
 
     <div class="hero">
-        <h1>Exclusive Collection</h1>
-        <p>Browse my creations and tell me what you love.</p>
+        <h1>Handcrafted Elegance</h1>
+        <p>A curated selection of bespoke creations for your most sacred moments.</p>
     </div>
 
-    <h2 id="products" class="section-title">Our Products</h2>
+    <h2 id="products" class="section-title">New Arrivals</h2>
     
     <div class="container">
         
         <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹1,499</span></div>
-            <img src="zahida.1.jpeg" alt="Product 1">
+            <div class="image-container">
+                <img src="zahida.1.jpeg" alt="Nikah-Nama Box">
+            </div>
             <div class="card-content">
                 <h3>Nikah-Nama Box</h3>
-                <p>Made for your blessed union</p>
+                <p>Bespoke union keepsake</p>
+                <span class="price">₹1,499</span>
             </div>
         </div>
 
         <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹999</span></div>
-            <img src="zahida.2.jpeg" alt="Product 2">
+            <div class="image-container">
+                <img src="zahida.2.jpeg" alt="Nikah Mirror">
+            </div>
             <div class="card-content">
                 <h3>Nikah Mirror</h3>
-                <p>Reflecting love and elegance</p>
+                <p>Elegance redefined</p>
+                <span class="price">₹999</span>
             </div>
         </div>
 
         <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹199</span></div>
-            <img src="zahida.3.jpeg" alt="Product 3">
+            <div class="image-container">
+                <img src="zahida.3.jpeg" alt="Keychain">
+            </div>
             <div class="card-content">
-                <h3>Keychain</h3>
-                <p>Carry your memories everywhere</p>
+                <h3>Memory Keychain</h3>
+                <p>Personalized resin craft</p>
+                <span class="price">₹199</span>
             </div>
         </div> 
 
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹1,699</span></div>
-            <img src="zahida.4.jpeg" alt="Product 4">
-            <div class="card-content">
-                <h3>Nikah Prayer Mats</h3>
-                <p>Made for Dua</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹699</span></div>
-            <img src="zahida.5.jpeg" alt="Product 5">
-            <div class="card-content">
-                <h3>Resin Black Rahel</h3>
-                <p>Beautifully crafted for sacred moments</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="location.href='#contact'">
-            <div class="price-overlay"><span class="price-text">₹499</span></div>
-            <img src="zahida.6.jpeg" alt="Product 6">
-            <div class="card-content">
-                <h3>Resin Coaster</h3>
-                <p>Style and protection for your space</p>
-            </div>
-        </div>
-
-    </div> 
+        </div> 
 
     <div id="contact" class="contact-section">
-        <h2>Order on WhatsApp</h2>
         <div class="contact-form">
-            <input type="text" id="name" placeholder="Your Name">
-            <textarea id="msg" rows="4" placeholder="Which product do you want to buy?"></textarea>
-            <button type="button" onclick="sendToWhatsapp()">Send Message to ZS Creations</button>
+            <h2 style="text-align: center; margin-bottom: 30px;">Direct Inquiry</h2>
+            <input type="text" id="name" placeholder="Full Name">
+            <textarea id="msg" rows="4" placeholder="Share the product name or customization details..."></textarea>
+            <button type="button" onclick="sendToWhatsapp()">Message on WhatsApp</button>
             
             <div class="qr-container">
-                <p style="font-weight: bold; color: #333; margin-bottom: 5px;">Scan to Pay Online (UPI)</p>
+                <p style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">Scan for UPI Payment</p>
                 <img src="mizan.qr.2.jpeg" alt="UPI QR Code">
-                <p style="font-size: 13px; color: #666;">After payment, please share the screenshot on WhatsApp.</p>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 ZS Creations</p>
+        <p>MADE WITH PRECISION | &copy; 2026 ZS CREATIONS</p>
     </footer>
 
     <script>
         function sendToWhatsapp() {
             let name = document.getElementById('name').value;
             let msg = document.getElementById('msg').value;
-            let number = "917478471531"; 
+            let number = "919199079326"; 
 
             let url = "https://wa.me/" + number + "?text=" 
-                + "Name: " + name + "%0a" 
-                + "Message: " + msg;
+                + "Hello ZS Creations,%0a"
+                + "My Name: " + name + "%0a" 
+                + "Inquiry: " + msg;
 
             window.open(url, '_blank').focus();
         }
