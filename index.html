@@ -1,24 +1,21 @@
-<div class="product-card decor" onclick="openGallery()">
-    <div class="image-collage">
-        <img src="zahida.1.jpeg" alt="View 1">
-        <img src="zahida.2.jpeg" alt="View 2">
-        <img src="zahida.3.jpeg" alt="View 3">
-        <img src="zahida.4.jpeg" alt="View 4">
-    </div>
-    <h3>Lavender Mirror Box</h3>
-    <p>₹1699</p>
-    <button class="view-details">View Full Collection</button>
+<div class="filter-container">
+    <button class="filter-btn active" onclick="showCategory('all', '#fef6fb')">All Products</button>
+    <button class="filter-btn" onclick="showCategory('decor', '#f0e6ff')">Nikah Collection</button>
+    <button class="filter-btn" onclick="showCategory('candles', '#fff9e6')">Candles</button>
 </div>
 
-<div id="galleryModal" class="modal">
-    <span class="close" onclick="closeGallery()">&times;</span>
-    <div class="modal-content">
-        <h2>Lavender Mirror Collection</h2>
-        <div class="full-grid">
-            <div class="item"><img src="zahida.1.jpeg"><h3>Design 1</h3></div>
-            <div class="item"><img src="zahida.2.jpeg"><h3>Design 2</h3></div>
-            <div class="item"><img src="zahida.3.jpeg"><h3>Design 3</h3></div>
-            <div class="item"><img src="zahida.4.jpeg"><h3>Design 4</h3></div>
-        </div>
+<section id="product-grid">
+    <div class="category-group decor hide">
+        <h2 class="group-title">Premium Nikah-Nama Sets</h2>
+        <div class="full-view-card"><img src="zahida.1.jpeg"><h3>Classic Velvet Box</h3></div>
+        <div class="full-view-card"><img src="zahida.2.jpeg"><h3>Mirror Work Design</h3></div>
+        <div class="full-view-card"><img src="zahida.3.jpeg"><h3>Gold Leaf Detailing</h3></div>
+        <div class="full-view-card"><img src="zahida.4.jpeg"><h3>Royal White Edition</h3></div>
     </div>
-</div>
+
+    <div class="category-group candles hide">
+        <h2 class="group-title">Scented Candles</h2>
+        <div class="full-view-card"><img src="zahida.5.jpeg"><h3>Lavender Scent</h3></div>
+        <div class="full-view-card"><img src="zahida.6.jpeg"><h3>Rose Petal Scent</h3></div>
+    </div>
+</section>
