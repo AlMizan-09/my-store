@@ -90,11 +90,8 @@
         </div>
         <div id="product-stack" class="stack-container"></div>
     </div>
-    <div id="qr-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:3000; justify-content:center; align-items:center;">
-   
 
     <script>
-        1et tempOrderLink = "";
         // 1. Slider Logic
         const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
         let sliderIdx = 0;
@@ -159,7 +156,6 @@
     {src: 'keychain.5.jpeg', price: '₹800'}
 ];
 
-        1et tempOrderLink = "";
         // 3. Display Logic
         function openOverlay(title, products) {
             const stack = document.getElementById('product-stack');
@@ -195,24 +191,8 @@
             document.body.style.overflow = 'auto';
         }
 
-      function sendWA(name, price) {
-    tempOrderLink = `https://wa.me/917478471531?text=I want to order ${name} for ${price}. Payment done, sending screenshot!`;
-    document.getElementById('qr-modal').style.display = 'flex';
-
-    document.getElementById('confirm-pay-btn').onclick = function() {
-        window.open(tempOrderLink, '_blank');
-        document.getElementById('qr-modal').style.display = 'none';
-    };
-}
-    // QR Modal show karein
-    document.getElementById('qr-modal').style.display = 'flex';
-    
-    // WhatsApp button ka kaam set karein
-    document.getElementById('confirm-pay-btn').onclick = function() {
-        window.open(tempOrderLink, '_blank');
-        document.getElementById('qr-modal').style.display = 'none';
-    };
-}
+        function sendWA(name, price) {
+            window.open(`https://wa.me/917478471531?text=I want to order ${name} for ${price}`, '_blank');
         }
     </script>
 </body>
