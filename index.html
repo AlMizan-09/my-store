@@ -85,7 +85,7 @@
         }, 3000);
 
         // 2. Data Lists
-        const Nikah Products = [
+        const nikahProducts = [
             {src: 'zahida.1.jpeg', price: '₹1499',name:'Premium Nikah Box'},
             {src: 'nikah.1.jpeg', price: '₹1499', name:'Blush Pink Nikah Nama'},
             {src: 'nikah.2.jpeg', price: '₹1499', name:'White Nikah Nama'},
@@ -124,7 +124,7 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function showRehal() { openOverlay('Nikah-Nama Box',NikahProducts); }
+        function showRehal() { openOverlay('Nikah-Nama Box',nikahProducts); }
         function showJewelry() { openOverlay('Jewelry', jewelryProducts); }
 
         function closeGallery() {
