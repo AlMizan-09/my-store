@@ -58,7 +58,7 @@
     <div class="category-container">
         <div class="category-card" onclick="showRehal()">
             <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
-            <div class="cat-name">Quran Rehal</div>
+            <div class="cat-name">Nikha Nama Box</div>
         </div>
 
         <div class="category-card" onclick="showJewelry()">
@@ -86,7 +86,7 @@
 
         // 2. Data Lists
         const rehalProducts = [
-            {src: 'zahida.1.jpeg', price: '₹1499'},
+            {src: 'zahida.1.jpeg', price: '₹1499',},
             {src: 'nikah.1.jpeg', price: '₹1499'},
             {src: 'nikah.2.jpeg', price: '₹1499'},
             {src: 'nikah.3.jpeg', price: '₹1499'},
@@ -124,7 +124,7 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function showRehal() { openOverlay('Quran Rehal', rehalProducts); }
+        function showRehal() { openOverlay('Nikah Nama Box', rehalProducts); }
         function showJewelry() { openOverlay('Jewelry', jewelryProducts); }
 
         function closeGallery() {
