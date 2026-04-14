@@ -74,8 +74,8 @@
     <div class="cat-name">Nikah Mirror</div>
 </div>
         <div class="category-card" onclick="showPlaque()">
-    <div class="single-cat-img"><img src="aapki-image.jpg"></div>
-    <div class="cat-name">Nayi Category Ka Naam</div>
+    <div class="single-cat-img"><img src="zahida.6.jpeg"></div>
+    <div class="cat-name">Nikah Plaque</div>
 </div>
     </div>
 
@@ -121,11 +121,11 @@
              {src: 'rehel.9.jpeg', price: '₹699'}
         ];
         const prayermatProducts = [
-    {src: 'zahida.4.jpeg', price: '₹500'},
-    {src: 'prayer.1.jpeg', price: '₹800'},
-    {src: 'prayer.2.jpeg', price: '₹800'},
-    {src: 'prayer.3.jpeg', price: '₹800'},
-    {src: 'prayer.4.jpeg', price: '₹800'},
+    {src: 'zahida.4.jpeg', price: '₹2599'},
+    {src: 'prayer.1.jpeg', price: '₹2599'},
+    {src: 'prayer.2.jpeg', price: '₹2599'},
+    {src: 'prayer.3.jpeg', price: '₹2599'},
+    {src: 'prayer.4.jpeg', price: '₹2499'},
 ];
         const mirrorProducts = [
     {src: 'zahida.2.jpeg', price: '₹699'},
@@ -134,6 +134,14 @@
     {src: 'mirror.3.jpeg', price: '₹699'},
     {src: 'mirror.4.jpeg', price: '₹699'},
     {src: 'mirror.5.jpeg', price: '₹699'}
+];
+        const plaqueProducts = [
+    {src: 'zahida.6.jpeg', price: '₹499'},
+    {src: 'plaque.1.jpeg', price: '₹499'},
+    {src: 'plaque.2.jpeg', price: '₹499'},
+    {src: 'plaque.3.jpeg', price: '₹499'},
+    {src: 'plaque.4.jpeg', price: '₹499'},
+    {src: 'plaque.5.jpeg', price: '₹499'}
 ];
 
         // 3. Display Logic
@@ -163,6 +171,7 @@
         function showJewelry() { openOverlay('Rehel', jewelryProducts); }
         function showPrayerMat() { openOverlay('Prayer Mat', prayermatProducts); }
         function showMirror() { openOverlay('Nikah Mirror', mirrorProducts); }
+        function showPlaque() { openOverlay('Nikah Plaque', plaqueProducts); }
 
         function closeGallery() {
             document.getElementById('gallery-overlay').style.display = 'none';
