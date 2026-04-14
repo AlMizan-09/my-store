@@ -1,130 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZS Creations | Store</title>
-    <style>
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
-        
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
-        .nav-links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-        .nav-links a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-
-        /* Hero Slider */
-        .hero { 
-            padding: 100px 20px; text-align: center; position: relative; min-height: 450px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-size: cover; background-position: center; transition: background-image 1s ease-in-out; color: white;
-        }
-        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
-        .hero h1, .hero p, .hero .view-btn { position: relative; z-index: 2; }
-        .view-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-
-        /* Category Collage */
-        .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; }
-        .category-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #fce4ec; }
-        .collage-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; height: 250px; }
-        .collage-grid img { width: 100%; height: 100%; object-fit: cover; }
-        .cat-name { padding: 10px; text-align: center; font-weight: bold; color: #880e4f; background: #fce4ec; }
-
-        /* Pink Product Cards */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: #ff00ff; border-radius: 20px; padding: 20px; text-align: center; color: black; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
-        .qty-box { margin: 15px 0; font-weight: bold; }
-        .qty-input { width: 50px; padding: 5px; text-align: center; border-radius: 5px; border: none; }
-        .btn-group { display: flex; gap: 10px; justify-content: center; }
-        .btn-group button { padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-add { background: white; color: #ff00ff; }
-        .btn-order { background: #28a745; color: white; }
-
-        /* Footer & QR */
-        .qr-section { background: white; padding: 30px; margin-top: 50px; text-align: center; border-top: 1px solid #eee; }
-        .qr-section img { width: 180px; margin: 10px 0; border-radius: 10px; }
-        footer { padding: 20px; text-align: center; background: #2c3e50; color: white; }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="brand">ZS CREATIONS</div>
-        <div class="nav-links">
-            <a href="#products">Collection</a>
-            <a href="#contact">Contact</a>
+<h2 class="section-title">Shop by Category</h2>
+<div class="category-container">
+    <div class="category-card" onclick="openCategory('rehal', 'zahida.1.jpeg', 'zahida.2.jpeg', 'zahida.3.jpeg', 'zahida.4.jpeg')">
+        <div class="collage-grid">
+            <img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
+            <img src="zahida.3.jpeg"><img src="zahida.4.jpeg">
         </div>
-    </nav>
-
-    <div class="hero" id="hero-slider">
-        <h1>Exclusive Collection</h1>
-        <p>Browse my creations and tell me what you love.</p>
-        <a href="#products" class="view-btn">View Shop</a>
+        <div class="cat-name">Quran Rehal</div>
     </div>
-
-    <h2 class="section-title">Shop by Category</h2>
-    <div class="category-container">
-        <div class="category-card">
-            <div class="collage-grid">
-                <img src="zahida.1.jpeg"><img src="zahida.2.jpeg"><img src="zahida.3.jpeg"><img src="zahida.4.jpeg">
-            </div>
-            <div class="cat-name">Quran Rehal</div>
+    
+    <div class="category-card" onclick="openCategory('candles', 'zahida.5.jpeg', 'zahida.6.jpeg')">
+        <div class="collage-grid">
+            <img src="zahida.5.jpeg"><img src="zahida.6.jpeg">
+            <img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
         </div>
-        <div class="category-card">
-            <div class="collage-grid">
-                <img src="zahida.5.jpeg"><img src="zahida.6.jpeg"><img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
-            </div>
-            <div class="cat-name">Bookmarks</div>
+        <div class="cat-name">Premium Candles</div>
+    </div>
+</div>
+
+<div id="dynamic-gallery" class="gallery-section" style="display:none;">
+    <div class="gallery-header">
+        <h2 id="gallery-title">Collection</h2>
+        <button onclick="closeGallery()" class="close-btn">Back to Categories</button>
+    </div>
+    <div id="product-list" class="full-stack-list">
         </div>
-    </div>
-
-    <h2 id="products" class="section-title">Our Products</h2>
-    <div class="container">
-        <div class="card">
-            <img src="zahida.3.jpeg" alt="Keychain">
-            <h3>ZS Keychain</h3>
-            <p style="font-size: 1.2rem; font-weight: bold;">₹200</p>
-            <div class="qty-box">QTY: <input type="number" id="qty1" class="qty-input" value="1" min="1"></div>
-            <div class="btn-group">
-                <button class="btn-add" onclick="alert('Added to Cart')">Add to Cart</button>
-                <button class="btn-order" onclick="sendToWA('ZS Keychain', 'qty1')">Order</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="contact" class="qr-section">
-        <h3>Order on WhatsApp</h3>
-        <p>Scan to Pay via UPI</p>
-        <img src="mizan.qr.2.jpeg" alt="QR Code">
-        <p>Send screenshot after payment</p>
-    </div>
-
-    <footer><p>&copy; 2026 ZS Creations</p></footer>
-
-    <script>
-        // Hero Slider
-        const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
-        let idx = 0;
-        function changeBG() {
-            const hero = document.getElementById('hero-slider');
-            if(hero) {
-                hero.style.backgroundImage = `url('${sliderImgs[idx]}')`;
-                idx = (idx + 1) % sliderImgs.length;
-            }
-        }
-        setInterval(changeBG, 3000);
-        changeBG();
-
-        // WhatsApp Function
-        function sendToWA(product, qtyId) {
-            let qty = document.getElementById(qtyId).value;
-            let num = "917478471531"; 
-            let url = `https://wa.me/${num}?text=Hello, I want to order ${qty} x ${product}`;
-            window.open(url, '_blank').focus();
-        }
-    </script>
-</body>
-</html>
+</div>
