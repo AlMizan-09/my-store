@@ -1,28 +1,19 @@
-function filterProduct(category, bgColor) {
-    // Background color change karein
-    document.getElementById("main-body").style.backgroundColor = bgColor;
+// Gallery kholne ke liye
+function openGallery() {
+    document.getElementById("galleryModal").style.display = "block";
+    document.body.style.overflow = "hidden"; // Background scroll band karne ke liye
+}
 
-    // Active button style change karein
-    let buttons = document.querySelectorAll(".filter-btn");
-    buttons.forEach((btn) => {
-        if (btn.innerText.toLowerCase().includes(category.toLowerCase()) || (category === 'all' && btn.innerText === 'All')) {
-            btn.classList.add("active");
-        } else {
-            btn.classList.remove("active");
-        }
-    });
+// Gallery band karne ke liye
+function closeGallery() {
+    document.getElementById("galleryModal").style.display = "none";
+    document.body.style.overflow = "auto"; // Scroll wapas chalu
+}
 
-    // Products filter karein
-    let cards = document.querySelectorAll(".product-card");
-    cards.forEach((card) => {
-        if (category === "all") {
-            card.classList.remove("hide");
-        } else {
-            if (card.classList.contains(category)) {
-                card.classList.remove("hide");
-            } else {
-                card.classList.add("hide");
-            }
-        }
-    });
+// Modal ke bahar click karne par bhi band ho jaye
+window.onclick = function(event) {
+    let modal = document.getElementById("galleryModal");
+    if (event.target == modal) {
+        closeGallery();
+    }
 }
