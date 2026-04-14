@@ -90,6 +90,16 @@
         </div>
         <div id="product-stack" class="stack-container"></div>
     </div>
+    <div id="qr-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:3000; justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:15px; text-align:center; max-width:90%; width:320px;">
+        <h3 style="margin-top:0;">Scan & Pay</h3>
+        <img src="mizan.qr.2.jpeg" alt="QR Code" style="width:100%; border-radius:10px; margin:10px 0;">
+        <p style="font-size:0.85rem; color:#666;">Payment karne ke baad WhatsApp par screenshot bhein</p>
+        <button id="confirm-pay-btn" style="background:#28a745; color:white; padding:12px; width:100%; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Paid? Chat on WhatsApp</button>
+        <br>
+        <button onclick="document.getElementById('qr-modal').style.display='none'" style="margin-top:15px; background:none; border:none; color:#999; cursor:pointer; text-decoration:underline;">Cancel</button>
+    </div>
+</div>
 
     <script>
         // 1. Slider Logic
@@ -156,6 +166,7 @@
     {src: 'keychain.5.jpeg', price: '₹800'}
 ];
 
+        1et tempOrderLink = "";
         // 3. Display Logic
         function openOverlay(title, products) {
             const stack = document.getElementById('product-stack');
@@ -192,7 +203,18 @@
         }
 
         function sendWA(name, price) {
-            window.open(`https://wa.me/917478471531?text=I want to order ${name} for ${price}`, '_blank');
+    // Message link generate karein
+    tempOrderLink = `https://wa.me/917478471531?text=I want to order ${name} for ${price}. Payment done, sending screenshot!`;
+    
+    // QR Modal show karein
+    document.getElementById('qr-modal').style.display = 'flex';
+    
+    // WhatsApp button ka kaam set karein
+    document.getElementById('confirm-pay-btn').onclick = function() {
+        window.open(tempOrderLink, '_blank');
+        document.getElementById('qr-modal').style.display = 'none';
+    };
+}
         }
     </script>
 </body>
