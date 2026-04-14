@@ -1,19 +1,17 @@
-// Gallery kholne ke liye
-function openGallery() {
-    document.getElementById("galleryModal").style.display = "block";
-    document.body.style.overflow = "hidden"; // Background scroll band karne ke liye
-}
+function showCategory(category, color) {
+    // 1. Background badlo
+    document.body.style.backgroundColor = color;
 
-// Gallery band karne ke liye
-function closeGallery() {
-    document.getElementById("galleryModal").style.display = "none";
-    document.body.style.overflow = "auto"; // Scroll wapas chalu
-}
+    // 2. Sari purani list chhupao
+    document.querySelectorAll('.category-group').forEach(group => {
+        group.classList.add('hide');
+    });
 
-// Modal ke bahar click karne par bhi band ho jaye
-window.onclick = function(event) {
-    let modal = document.getElementById("galleryModal");
-    if (event.target == modal) {
-        closeGallery();
+    // 3. Agar 'all' hai toh default view dikhao, warna sirf select ki gayi category
+    if(category !== 'all') {
+        document.querySelector('.' + category).classList.remove('hide');
+    } else {
+        // 'all' ke liye aap purana grid view dikha sakte hain
+        alert("Please select a specific category to see the full collection!");
     }
 }
