@@ -1,40 +1,27 @@
-/* Background transition ke liye */
-body { transition: background 0.6s ease; }
-
-.hide { display: none; }
-
-.category-group {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+/* Gallery Styling */
+.gallery-section {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #fef6fb; z-index: 2000; overflow-y: auto; padding: 20px;
+}
+.gallery-header {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 800px; margin: 0 auto 30px;
+}
+.close-btn {
+    padding: 10px 20px; background: #d4a373; color: white; border: none; border-radius: 5px; cursor: pointer;
+}
+.full-stack-list {
+    display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+.category-item-card {
+    width: 95%; max-width: 500px; background: white; border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden;
     animation: slideUp 0.5s ease;
 }
-
-.group-title {
-    text-align: center;
-    color: #d4a373;
-    margin-bottom: 25px;
-    font-size: 24px;
-}
-
-.full-view-card {
-    background: white;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-.full-view-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+.category-item-card img { width: 100%; height: auto; display: block; }
+.category-item-card h3 { padding: 15px; margin: 0; text-align: center; }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
 }
