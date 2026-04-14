@@ -1,28 +1,28 @@
-function filterProduct(value) {
+function filterProduct(category, bgColor) {
+    // Background color change karein
+    document.getElementById("main-body").style.backgroundColor = bgColor;
+
+    // Active button style change karein
     let buttons = document.querySelectorAll(".filter-btn");
-    buttons.forEach((button) => {
-        if (value.toUpperCase() == button.innerText.toUpperCase()) {
-            button.classList.add("active");
+    buttons.forEach((btn) => {
+        if (btn.innerText.toLowerCase().includes(category.toLowerCase()) || (category === 'all' && btn.innerText === 'All')) {
+            btn.classList.add("active");
         } else {
-            button.classList.remove("active");
+            btn.classList.remove("active");
         }
     });
 
-    let elements = document.querySelectorAll(".product-card");
-    elements.forEach((element) => {
-        if (value == "all") {
-            element.classList.remove("hide");
+    // Products filter karein
+    let cards = document.querySelectorAll(".product-card");
+    cards.forEach((card) => {
+        if (category === "all") {
+            card.classList.remove("hide");
         } else {
-            if (element.classList.contains(value)) {
-                element.classList.remove("hide");
+            if (card.classList.contains(category)) {
+                card.classList.remove("hide");
             } else {
-                element.classList.add("hide");
+                card.classList.add("hide");
             }
         }
     });
 }
-
-// Default load
-window.onload = () => {
-    filterProduct('all');
-};
