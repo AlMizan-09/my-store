@@ -13,7 +13,7 @@
         .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
         .nav-links a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-left: 15px; }
 
-        /* Hero Slider (Automatic BG Change) */
+        /* Hero Slider */
         .hero { 
             padding: 100px 20px; text-align: center; position: relative; min-height: 450px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -32,7 +32,7 @@
         .single-cat-img img { width: 100%; height: 100%; object-fit: cover; }
         .cat-name { padding: 15px; text-align: center; font-weight: bold; color: #880e4f; background: #fce4ec; }
 
-        /* Dynamic Gallery View (Fullscreen Stack) */
+        /* Fullscreen Stack Gallery */
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf2; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
         .gallery-header { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 30px; }
         .close-btn { padding: 10px 20px; background: #d4a373; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
@@ -40,6 +40,7 @@
         .full-width-card { width: 100%; max-width: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; animation: slideUp 0.5s ease; }
         .full-width-card img { width: 100%; height: auto; display: block; }
         .card-info { padding: 20px; text-align: center; }
+        .product-price { color: #d4a373; font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
         .btn-order { background: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
@@ -63,12 +64,21 @@
 
     <h2 class="section-title">Shop by Category</h2>
     <div class="category-container" id="products">
-        <div class="category-card" onclick="openCategory('Quran Rehal', '#fdf0d5', 'zahida.1.jpeg', 'zahida.2.jpeg', 'zahida.3.jpeg', 'zahida.4.jpeg')">
+        
+        <div class="category-card" onclick="openCategory('Quran Rehal', '#fdf0d5', 
+            {src: 'zahida.1.jpeg', price: '₹1200'}, 
+            {src: 'zahida.2.jpeg', price: '₹1500'}, 
+            {src: 'zahida.3.jpeg', price: '₹1350'}, 
+            {src: 'zahida.4.jpeg', price: '₹1600'}
+        )">
             <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
             <div class="cat-name">Quran Rehal</div>
         </div>
 
-        <div class="category-card" onclick="openCategory('Premium Collection', '#f0efeb', 'zahida.5.jpeg', 'zahida.6.jpeg')">
+        <div class="category-card" onclick="openCategory('Premium Collection', '#f0efeb', 
+            {src: 'zahida.5.jpeg', price: '₹450'}, 
+            {src: 'zahida.6.jpeg', price: '₹299'}
+        )">
             <div class="single-cat-img"><img src="zahida.5.jpeg"></div>
             <div class="cat-name">Jewelry & More</div>
         </div>
@@ -85,7 +95,7 @@
     <footer><p style="text-align:center; padding: 20px; background:#2c3e50; color:white;">&copy; 2026 ZS Creations</p></footer>
 
     <script>
-        // 1. Automatic Hero Background Slider
+        // Hero Slider
         const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
         let sliderIdx = 0;
         function rotateHero() {
@@ -98,42 +108,41 @@
         setInterval(rotateHero, 3000);
         rotateHero();
 
-        // 2. Open Category Function (Stack View)
-        function openCategory(title, bgColor, ...images) {
+        // Updated Open Category Function to handle Price
+        function openCategory(title, bgColor, ...productData) {
             const overlay = document.getElementById('gallery-overlay');
             const stack = document.getElementById('product-stack');
             const headTitle = document.getElementById('cat-title');
 
             headTitle.innerText = title;
             overlay.style.backgroundColor = bgColor;
-            stack.innerHTML = ''; // Clear old content
+            stack.innerHTML = ''; 
 
-            images.forEach((img) => {
+            productData.forEach((item) => {
                 stack.innerHTML += `
                     <div class="full-width-card">
-                        <img src="${img}">
+                        <img src="${item.src}">
                         <div class="card-info">
                             <h3>${title} Design</h3>
-                            <button class="btn-order" onclick="sendToWA('${title}')">Order on WhatsApp</button>
+                            <p class="product-price">${item.price}</p>
+                            <button class="btn-order" onclick="sendToWA('${title}', '${item.price}')">Order on WhatsApp</button>
                         </div>
                     </div>
                 `;
             });
 
             overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Stop main scroll
+            document.body.style.overflow = 'hidden'; 
         }
 
-        // 3. Close Gallery
         function closeGallery() {
             document.getElementById('gallery-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        // 4. WhatsApp Order Function
-        function sendToWA(product) {
+        function sendToWA(product, price) {
             let num = "917478471531"; 
-            let url = `https://wa.me/${num}?text=Hello, I want to order ${product}`;
+            let url = `https://wa.me/${num}?text=Hello, I want to order ${product} (Price: ${price})`;
             window.open(url, '_blank').focus();
         }
     </script>
