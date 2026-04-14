@@ -1,17 +1,28 @@
-function showCategory(category, color) {
-    // 1. Background badlo
-    document.body.style.backgroundColor = color;
+function openCategory(name, ...images) {
+    const gallery = document.getElementById('dynamic-gallery');
+    const list = document.getElementById('product-list');
+    const title = document.getElementById('gallery-title');
+    
+    title.innerText = name.toUpperCase() + " COLLECTION";
+    list.innerHTML = ''; // Purana saaf karein
 
-    // 2. Sari purani list chhupao
-    document.querySelectorAll('.category-group').forEach(group => {
-        group.classList.add('hide');
+    images.forEach((imgSrc, index) => {
+        list.innerHTML += `
+            <div class="category-item-card">
+                <img src="${imgSrc}" alt="Product">
+                <h3>${name} Design ${index + 1}</h3>
+                <div style="text-align:center; padding-bottom:15px;">
+                    <button class="btn-order" onclick="sendToWA('${name}', '${imgSrc}')" style="width:80%;">Order on WhatsApp</button>
+                </div>
+            </div>
+        `;
     });
 
-    // 3. Agar 'all' hai toh default view dikhao, warna sirf select ki gayi category
-    if(category !== 'all') {
-        document.querySelector('.' + category).classList.remove('hide');
-    } else {
-        // 'all' ke liye aap purana grid view dikha sakte hain
-        alert("Please select a specific category to see the full collection!");
-    }
+    gallery.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Scroll disable
+}
+
+function closeGallery() {
+    document.getElementById('dynamic-gallery').style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
