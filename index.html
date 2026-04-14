@@ -1,27 +1,141 @@
-<h2 class="section-title">Shop by Category</h2>
-<div class="category-container">
-    <div class="category-card" onclick="openCategory('rehal', 'zahida.1.jpeg', 'zahida.2.jpeg', 'zahida.3.jpeg', 'zahida.4.jpeg')">
-        <div class="collage-grid">
-            <img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
-            <img src="zahida.3.jpeg"><img src="zahida.4.jpeg">
-        </div>
-        <div class="cat-name">Quran Rehal</div>
-    </div>
-    
-    <div class="category-card" onclick="openCategory('candles', 'zahida.5.jpeg', 'zahida.6.jpeg')">
-        <div class="collage-grid">
-            <img src="zahida.5.jpeg"><img src="zahida.6.jpeg">
-            <img src="zahida.1.jpeg"><img src="zahida.2.jpeg">
-        </div>
-        <div class="cat-name">Premium Candles</div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZS Creations | Premium Store</title>
+    <style>
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; transition: background 0.5s ease; }
+        
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
+        .nav-links a { text-decoration: none; color: #333; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-left: 15px; }
 
-<div id="dynamic-gallery" class="gallery-section" style="display:none;">
-    <div class="gallery-header">
-        <h2 id="gallery-title">Collection</h2>
-        <button onclick="closeGallery()" class="close-btn">Back to Categories</button>
-    </div>
-    <div id="product-list" class="full-stack-list">
+        /* Hero Slider (Automatic BG Change) */
+        .hero { 
+            padding: 100px 20px; text-align: center; position: relative; min-height: 450px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background-size: cover; background-position: center; transition: background-image 1s ease-in-out; color: white;
+        }
+        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
+        .hero h1, .hero p, .hero .view-btn { position: relative; z-index: 2; }
+        .view-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+
+        /* Shop by Category */
+        .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; }
+        .category-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+        .category-card:hover { transform: translateY(-5px); }
+        .single-cat-img { height: 250px; width: 100%; overflow: hidden; }
+        .single-cat-img img { width: 100%; height: 100%; object-fit: cover; }
+        .cat-name { padding: 15px; text-align: center; font-weight: bold; color: #880e4f; background: #fce4ec; }
+
+        /* Dynamic Gallery View (Fullscreen Stack) */
+        .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf2; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
+        .gallery-header { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 30px; }
+        .close-btn { padding: 10px 20px; background: #d4a373; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .stack-container { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .full-width-card { width: 100%; max-width: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; animation: slideUp 0.5s ease; }
+        .full-width-card img { width: 100%; height: auto; display: block; }
+        .card-info { padding: 20px; text-align: center; }
+        .btn-order { background: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">ZS CREATIONS</div>
+        <div class="nav-links">
+            <a href="#products">Collection</a>
+            <a href="#contact">Contact</a>
         </div>
-</div>
+    </nav>
+
+    <div class="hero" id="hero-slider">
+        <h1>Exclusive Collection</h1>
+        <p>Handcrafted with Love</p>
+        <a href="#products" class="view-btn">View Shop</a>
+    </div>
+
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-container" id="products">
+        <div class="category-card" onclick="openCategory('Quran Rehal', '#fdf0d5', 'zahida.1.jpeg', 'zahida.2.jpeg', 'zahida.3.jpeg', 'zahida.4.jpeg')">
+            <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
+            <div class="cat-name">Quran Rehal</div>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Premium Collection', '#f0efeb', 'zahida.5.jpeg', 'zahida.6.jpeg')">
+            <div class="single-cat-img"><img src="zahida.5.jpeg"></div>
+            <div class="cat-name">Jewelry & More</div>
+        </div>
+    </div>
+
+    <div id="gallery-overlay" class="gallery-overlay">
+        <div class="gallery-header">
+            <h2 id="cat-title">Collection</h2>
+            <button onclick="closeGallery()" class="close-btn">BACK</button>
+        </div>
+        <div id="product-stack" class="stack-container"></div>
+    </div>
+
+    <footer><p style="text-align:center; padding: 20px; background:#2c3e50; color:white;">&copy; 2026 ZS Creations</p></footer>
+
+    <script>
+        // 1. Automatic Hero Background Slider
+        const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
+        let sliderIdx = 0;
+        function rotateHero() {
+            const hero = document.getElementById('hero-slider');
+            if(hero) {
+                hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
+                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+            }
+        }
+        setInterval(rotateHero, 3000);
+        rotateHero();
+
+        // 2. Open Category Function (Stack View)
+        function openCategory(title, bgColor, ...images) {
+            const overlay = document.getElementById('gallery-overlay');
+            const stack = document.getElementById('product-stack');
+            const headTitle = document.getElementById('cat-title');
+
+            headTitle.innerText = title;
+            overlay.style.backgroundColor = bgColor;
+            stack.innerHTML = ''; // Clear old content
+
+            images.forEach((img) => {
+                stack.innerHTML += `
+                    <div class="full-width-card">
+                        <img src="${img}">
+                        <div class="card-info">
+                            <h3>${title} Design</h3>
+                            <button class="btn-order" onclick="sendToWA('${title}')">Order on WhatsApp</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Stop main scroll
+        }
+
+        // 3. Close Gallery
+        function closeGallery() {
+            document.getElementById('gallery-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 4. WhatsApp Order Function
+        function sendToWA(product) {
+            let num = "917478471531"; 
+            let url = `https://wa.me/${num}?text=Hello, I want to order ${product}`;
+            window.open(url, '_blank').focus();
+        }
+    </script>
+</body>
+</html>
