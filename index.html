@@ -21,7 +21,16 @@
             z-index: 1000; 
         }
         .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
-        .nav-link { text-decoration: none; color: #880e4f; font-weight: 600; font-size: 1rem; padding: 5px 10px; border-radius: 5px; transition: 0.3s; }
+        
+        .nav-link { 
+            text-decoration: none; 
+            color: #880e4f; 
+            font-weight: 600; 
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
         .nav-link:hover { background: #fce4ec; }
 
         /* Hero Slider */
@@ -43,6 +52,24 @@
         .single-cat-img img { width: 100%; height: 100%; object-fit: cover; }
         .cat-name { padding: 15px; text-align: center; font-weight: bold; background: #fce4ec; color: #880e4f; }
 
+        /* QR Code Footer Style */
+        .qr-footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+        .qr-card {
+            display: inline-block;
+            padding: 20px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .qr-code-img { width: 180px; height: 180px; border-radius: 10px; margin-bottom: 10px; }
+        .qr-footer p { margin: 5px 0; color: #666; font-size: 0.9rem; }
+
         /* Fullscreen Overlay */
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
         .gallery-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px; }
@@ -53,12 +80,6 @@
         .product-item img { width: 100%; height: auto; display: block; }
         .product-info { padding: 20px; text-align: center; }
         .price-tag { font-size: 1.4rem; font-weight: bold; color: #d4a373; margin: 10px 0; }
-        
-        /* Payment Section */
-        .payment-box { margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 10px; border: 1px dashed #ccc; }
-        .qr-img { width: 150px; height: 150px; margin: 10px 0; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .payment-text { font-size: 0.85rem; color: #555; margin-bottom: 10px; line-height: 1.4; }
-        
         .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
     </style>
 </head>
@@ -75,30 +96,45 @@
     </div>
 
     <h2 class="section-title" id="shop-section">Shop by Category</h2>
+    
     <div class="category-container">
         <div class="category-card" onclick="showNikahNama()">
             <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
             <div class="cat-name">Nikha Nama Box</div>
         </div>
+
         <div class="category-card" onclick="showRehel()">
             <div class="single-cat-img"><img src="zahida.5.jpeg"></div>
             <div class="cat-name">Rehel</div>
         </div>
+
         <div class="category-card" onclick="showPrayerMat()">
             <div class="single-cat-img"><img src="zahida.4.jpeg"></div>
             <div class="cat-name">Prayer Mat</div>
         </div>
+
         <div class="category-card" onclick="showMirror()">
             <div class="single-cat-img"><img src="zahida.2.jpeg"></div>
             <div class="cat-name">Nikah Mirror</div>
         </div>
+
         <div class="category-card" onclick="showPlaque()">
             <div class="single-cat-img"><img src="zahida.6.jpeg"></div>
             <div class="cat-name">Nikah Plaque</div>
         </div>
+
         <div class="category-card" onclick="showKeychain()">
             <div class="single-cat-img"><img src="zahida.3.jpeg"></div>
             <div class="cat-name">Keychains</div>
+        </div>
+    </div>
+
+    <div class="qr-footer">
+        <div class="qr-card">
+            <h3>Contact Us</h3>
+            <img src="YOUR_QR_IMAGE_HERE.jpg" alt="WhatsApp QR" class="qr-code-img">
+            <p>Scan to chat on WhatsApp</p>
+            <p><strong>+91 7478471531</strong></p>
         </div>
     </div>
 
@@ -111,7 +147,7 @@
     </div>
 
     <script>
-        // Slider Logic
+        // 1. Slider Logic
         const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
         let sliderIdx = 0;
         setInterval(() => {
@@ -119,14 +155,41 @@
             document.getElementById('hero-slider').style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
         }, 3000);
 
-        // Products Data
-        const nikahProducts = [{src: 'zahida.1.jpeg', price: '₹1499'}, {src: 'nikah.1.jpeg', price: '₹1499'}, {src: 'nikah.2.jpeg', price: '₹1499'}];
-        const rehelProducts = [{src: 'zahida.5.jpeg', price: '₹699'}, {src: 'rehel.1.jpeg', price: '₹1799'}];
-        const prayermatProducts = [{src: 'zahida.4.jpeg', price: '₹2599'}];
-        const mirrorProducts = [{src: 'zahida.2.jpeg', price: '₹699'}];
-        const plaqueProducts = [{src: 'zahida.6.jpeg', price: '₹499'}];
-        const keychainProducts = [{src: 'zahida.3.jpeg', price: '₹500'}];
+        // 2. Data Lists
+        const nikahProducts = [
+            {src: 'zahida.1.jpeg', price: '₹1499'}, {src: 'nikah.1.jpeg', price: '₹1499'},
+            {src: 'nikah.2.jpeg', price: '₹1499'}, {src: 'nikah.3.jpeg', price: '₹1499'},
+            {src: 'nikah.4.jpeg', price: '₹1299'}, {src: 'nikah.5.jpeg', price: '₹1299'},
+            {src: 'nikah.6.jpeg', price: '₹1299'}, {src: 'nikah.7.jpeg', price: '₹1499'}
+        ];
 
+        const rehelProducts = [
+            {src: 'zahida.5.jpeg', price: '₹699'}, {src: 'rehel.1.jpeg', price: '₹1799'},
+            {src: 'rehel.2.jpeg', price: '₹699'}, {src: 'rehel.3.jpeg', price: '₹699'},
+            {src: 'rehel.4.jpeg', price: '₹699'}, {src: 'rehel.5.jpeg', price: '₹699'}
+        ];
+
+        const prayermatProducts = [
+            {src: 'zahida.4.jpeg', price: '₹2599'}, {src: 'prayer.1.jpeg', price: '₹2599'},
+            {src: 'prayer.2.jpeg', price: '₹2599'}, {src: 'prayer.3.jpeg', price: '₹2599'}
+        ];
+
+        const mirrorProducts = [
+            {src: 'zahida.2.jpeg', price: '₹699'}, {src: 'mirror.1.jpeg', price: '₹699'},
+            {src: 'mirror.2.jpeg', price: '₹699'}, {src: 'mirror.3.jpeg', price: '₹699'}
+        ];
+
+        const plaqueProducts = [
+            {src: 'zahida.6.jpeg', price: '₹499'}, {src: 'plaque.1.jpeg', price: '₹499'},
+            {src: 'plaque.2.jpeg', price: '₹499'}, {src: 'plaque.3.jpeg', price: '₹499'}
+        ];
+
+        const keychainProducts = [
+            {src: 'zahida.3.jpeg', price: '₹500'}, {src: 'keychain.1.jpeg', price: '₹800'},
+            {src: 'keychain.2.jpeg', price: '₹800'}, {src: 'keychain.3.jpeg', price: '₹800'}
+        ];
+
+        // 3. Display Logic
         function openOverlay(title, products) {
             const stack = document.getElementById('product-stack');
             document.getElementById('cat-title').innerText = title;
@@ -139,19 +202,19 @@
                         <div class="product-info">
                             <h3>${title} Design</h3>
                             <p class="price-tag">${item.price}</p>
-                            
-                            <div class="payment-box">
-                                <p class="payment-text">Scan to Pay & send screenshot on WhatsApp</p>
-                                <img src="payment_qr.jpeg" alt="QR Code" class="qr-img">
-                            </div>
-
-                            <button class="wa-btn" onclick="sendWA('${title}', '${item.price}')">
-                                Send Payment Screenshot
-                            </button>
+                            <button class="wa-btn" onclick="sendWA('${title}', '${item.price}')">Order on WhatsApp</button>
                         </div>
                     </div>
                 `;
             });
+
+            // Small QR inside overlay for quick reference
+            stack.innerHTML += `
+                <div style="text-align:center; padding: 30px; border-top: 1px solid #eee; width: 100%;">
+                    <p>Scan to discuss customization:</p>
+                    <img src="YOUR_QR_IMAGE_HERE.jpg" style="width:120px; border-radius:10px;">
+                </div>
+            `;
 
             document.getElementById('gallery-overlay').style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -170,8 +233,7 @@
         }
 
         function sendWA(name, price) {
-            const msg = `I have paid ${price} for ${name}. Here is my payment screenshot.`;
-            window.open(`https://wa.me/917478471531?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/917478471531?text=I want to order ${name} for ${price}`, '_blank');
         }
     </script>
 </body>
