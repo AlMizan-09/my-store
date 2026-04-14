@@ -69,6 +69,10 @@
     <div class="single-cat-img"><img src="zahida.4.jpeg"></div>
     <div class="cat-name">Prayer Mat</div>
 </div>
+        <div class="category-card" onclick="showMirror()">
+    <div class="single-cat-img"><img src="zahida.2.jpeg"></div>
+    <div class="cat-name">Nikah Mirror</div>
+</div>
     </div>
 
     <div id="gallery-overlay" class="gallery-overlay">
@@ -119,6 +123,14 @@
     {src: 'prayer.3.jpeg', price: '₹800'},
     {src: 'prayer.4.jpeg', price: '₹800'},
 ];
+        const mirrorProducts = [
+    {src: 'zahida.2.jpeg', price: '₹699'},
+    {src: 'mirror.1.jpeg', price: '₹699'},
+    {src: 'mirror.2.jpeg', price: '₹699'},
+    {src: 'mirror.3.jpeg', price: '₹699'},
+    {src: 'mirror.4.jpeg', price: '₹699'},
+    {src: 'mirror.5.jpeg', price: '₹699'}
+];
 
         // 3. Display Logic
         function openOverlay(title, products) {
@@ -146,6 +158,7 @@
         function showRehal() { openOverlay('Nikah Nama Box', rehalProducts); }
         function showJewelry() { openOverlay('Rehel', jewelryProducts); }
         function showPrayerMat() { openOverlay('Prayer Mat', prayermatProducts); }
+        function showMirror() { openOverlay('Nikah Mirror', mirrorProducts); }
 
         function closeGallery() {
             document.getElementById('gallery-overlay').style.display = 'none';
