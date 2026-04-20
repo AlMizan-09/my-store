@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZS Creations | Premium Store</title>
+    <title>AZ Creations | Premium Store</title>
     <style>
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
         
-        /* Navigation */
+        /* Navigation Bar */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -20,126 +20,241 @@
             top: 0; 
             z-index: 1000; 
         }
-        .brand { font-size: 1.4rem; font-weight: 800; color: #d4a373; letter-spacing: 1px; }
-        .nav-link { text-decoration: none; color: #880e4f; font-weight: 600; padding: 5px 10px; border-radius: 5px; transition: 0.3s; }
-        .nav-link:hover { background: #fce4ec; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #880e4f; letter-spacing: 1px; }
 
-        /* Hero */
+        /* Main Container for Menu and Content */
+        .main-layout {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Menu Style (As per your Image) */
+        .sidebar-menu {
+            background-color: #fbc6f0; /* Light Pink Background */
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .sidebar-menu h1 {
+            font-family: 'cursive', 'Segoe UI';
+            font-size: 3rem;
+            color: #4a148c;
+            margin: 0 0 20px 0;
+            line-height: 1;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-list li {
+            margin-bottom: 12px;
+        }
+        .menu-list a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: 0.2s;
+            display: block;
+        }
+        .menu-list a:hover {
+            color: #880e4f;
+            padding-left: 5px;
+        }
+        .contact-link {
+            color: #007bff !important;
+            text-decoration: underline !important;
+        }
+
+        /* Hero Slider */
         .hero { 
             padding: 100px 20px; text-align: center; position: relative; min-height: 400px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-size: cover; background-position: center; transition: 1s; color: white;
+            background-size: cover; background-position: center; transition: background-image 1s ease-in-out; 
+            color: white; border-radius: 15px; overflow: hidden; margin-bottom: 40px;
             background-image: url('zahida.1.jpeg'); 
         }
         .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
         .hero h1, .hero p { position: relative; z-index: 2; margin: 10px 0; }
 
-        /* Categories */
-        .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; color: #333; }
-        .category-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-        .category-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; border: 1px solid #eee; }
-        .category-card:hover { transform: scale(1.03); border-color: #d4a373; }
-        .single-cat-img { height: 180px; width: 100%; overflow: hidden; }
+        /* Category Section */
+        .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; color: #4a148c; }
+        .category-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; border: 1px solid #eee; transition: 0.3s; }
+        .category-card:hover { transform: translateY(-5px); border-color: #fbc6f0; }
+        .single-cat-img { height: 250px; width: 100%; overflow: hidden; }
         .single-cat-img img { width: 100%; height: 100%; object-fit: cover; }
-        .cat-name { padding: 12px; text-align: center; font-weight: bold; font-size: 0.9rem; color: #880e4f; }
+        .cat-name { padding: 15px; text-align: center; font-weight: bold; background: #fce4ec; color: #880e4f; }
 
-        /* Overlay Fullscreen Gallery */
-        .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f9f9f9; z-index: 2000; overflow-y: auto; display: none; }
-        .gallery-header { position: sticky; top: 0; background: white; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd; z-index: 10; }
-        .close-btn { background: #880e4f; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        /* QR Footer */
+        .qr-footer { text-align: center; padding: 50px 20px; background: #fff; margin-top: 40px; border-radius: 15px; }
+        .qr-card { display: inline-block; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .qr-code-img { width: 180px; height: 180px; border-radius: 10px; margin-bottom: 10px; }
+
+        /* Fullscreen Overlay */
+        .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
+        .gallery-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .close-btn { padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
         
-        /* Product List in Overlay */
-        .product-list { max-width: 600px; margin: 20px auto; padding: 10px; display: flex; flex-direction: column; gap: 25px; }
-        .product-item { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .product-item img { width: 100%; height: auto; }
-        .product-info { padding: 15px; text-align: center; }
-        .price-tag { font-size: 1.2rem; font-weight: bold; color: #d4a373; margin-bottom: 10px; }
-        .wa-btn { background: #25D366; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; display: block; }
-        
-        /* Footer */
-        .qr-footer { text-align: center; padding: 40px; background: white; margin-top: 20px; }
-        .qr-code-img { width: 150px; border-radius: 10px; }
+        .stack-container { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .product-item { width: 100%; max-width: 450px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .product-item img { width: 100%; height: auto; display: block; }
+        .product-info { padding: 20px; text-align: center; }
+        .price-tag { font-size: 1.4rem; font-weight: bold; color: #d4a373; margin: 10px 0; }
+        .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand">ZS CREATIONS</div>
-        <a href="#shop-section" class="nav-link">Collection</a>
+        <div class="brand">AZ CREATIONS</div>
     </nav>
 
-    <div class="hero" id="hero-slider">
-        <h1>Exclusive Collection</h1>
-        <p>Handcrafted with Love</p>
+    <div class="main-layout">
+        <div class="sidebar-menu">
+            <h1>A Z <br> Creations</h1>
+            <ul class="menu-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#shop-section">All Products</a></li>
+                <li><a href="javascript:void(0)" onclick="showNikahNama()">Nikah Essentials</a></li>
+                <li><a href="javascript:void(0)" onclick="showRehel()">Rehel</a></li>
+                <li><a href="javascript:void(0)" onclick="showPrayerMat()">Prayer Mat</a></li>
+                <li><a href="javascript:void(0)" onclick="showMirror()">Mirror</a></li>
+                <li><a href="javascript:void(0)" onclick="showPlaque()">Plaque</a></li>
+                <li><a href="javascript:void(0)" onclick="showKeychain()">Keychains</a></li>
+                <li><a href="#contact-us" class="contact-link">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="hero" id="hero-slider">
+            <h1>Exclusive Collection</h1>
+            <p>Handcrafted with Love</p>
+        </div>
+
+        <h2 class="section-title" id="shop-section">Shop by Category</h2>
+        
+        <div class="category-container">
+            <div class="category-card" onclick="showNikahNama()">
+                <div class="single-cat-img"><img src="zahida.1.jpeg" alt="Nikah Nama"></div>
+                <div class="cat-name">Nikha Nama Box</div>
+            </div>
+
+            <div class="category-card" onclick="showRehel()">
+                <div class="single-cat-img"><img src="zahida.5.jpeg" alt="Rehel"></div>
+                <div class="cat-name">Rehel</div>
+            </div>
+
+            <div class="category-card" onclick="showPrayerMat()">
+                <div class="single-cat-img"><img src="zahida.4.jpeg" alt="Prayer Mat"></div>
+                <div class="cat-name">Prayer Mat</div>
+            </div>
+
+            <div class="category-card" onclick="showMirror()">
+                <div class="single-cat-img"><img src="zahida.2.jpeg" alt="Nikah Mirror"></div>
+                <div class="cat-name">Nikah Mirror</div>
+            </div>
+
+            <div class="category-card" onclick="showPlaque()">
+                <div class="single-cat-img"><img src="zahida.6.jpeg" alt="Nikah Plaque"></div>
+                <div class="cat-name">Nikah Plaque</div>
+            </div>
+
+            <div class="category-card" onclick="showKeychain()">
+                <div class="single-cat-img"><img src="zahida.3.jpeg" alt="Keychains"></div>
+                <div class="cat-name">Keychains</div>
+            </div>
+        </div>
     </div>
 
-    <h2 class="section-title" id="shop-section">Shop by Category</h2>
-    
-    <div class="category-container">
-        <div class="category-card" onclick="renderCategory('Nikah Nama Box', nikahProducts)">
-            <div class="single-cat-img"><img src="zahida.1.jpeg" alt="Nikah Nama"></div>
-            <div class="cat-name">Nikha Nama Box</div>
-        </div>
-        <div class="category-card" onclick="renderCategory('Rehel', rehelProducts)">
-            <div class="single-cat-img"><img src="zahida.5.jpeg" alt="Rehel"></div>
-            <div class="cat-name">Rehel</div>
-        </div>
-        <div class="category-card" onclick="renderCategory('Prayer Mat', prayermatProducts)">
-            <div class="single-cat-img"><img src="zahida.4.jpeg" alt="Prayer Mat"></div>
-            <div class="cat-name">Prayer Mat</div>
-        </div>
-        <div class="category-card" onclick="renderCategory('Nikah Mirror', mirrorProducts)">
-            <div class="single-cat-img"><img src="zahida.2.jpeg" alt="Nikah Mirror"></div>
-            <div class="cat-name">Nikah Mirror</div>
-        </div>
-        <div class="category-card" onclick="renderCategory('Nikah Plaque', plaqueProducts)">
-            <div class="single-cat-img"><img src="zahida.6.jpeg" alt="Nikah Plaque"></div>
-            <div class="cat-name">Nikah Plaque</div>
-        </div>
-        <div class="category-card" onclick="renderCategory('Keychains', keychainProducts)">
-            <div class="single-cat-img"><img src="zahida.3.jpeg" alt="Keychains"></div>
-            <div class="cat-name">Keychains</div>
+    <div class="qr-footer" id="contact-us">
+        <div class="qr-card">
+            <h3>Contact Us</h3>
+            <img src="mizan.qr.2.jpeg" alt="WhatsApp QR" class="qr-code-img">
+            <p>Scan to Pay or Chat</p>
         </div>
     </div>
 
     <div id="gallery-overlay" class="gallery-overlay">
         <div class="gallery-header">
-            <h2 id="cat-title" style="margin:0; font-size: 1.2rem;">Collection</h2>
-            <button onclick="closeGallery()" class="close-btn">BACK</button>
+            <h2 id="cat-title">Collection</h2>
+            <button onclick="closeGallery()" class="close-btn">CLOSE</button>
         </div>
-        <div id="product-list" class="product-list">
-            </div>
-    </div>
-
-    <div class="qr-footer">
-        <h3>Contact Us</h3>
-        <img src="mizan.qr.2.jpeg" alt="QR" class="qr-code-img">
-        <p>Scan to discuss customization</p>
+        <div id="product-stack" class="stack-container"></div>
     </div>
 
     <script>
-        // Data for products
-        const nikahProducts = [{src:'zahida.1.jpeg', price:'₹1499'}, {src:'nikah.2.jpeg', price:'₹1499'}, {src:'nikah.3.jpeg', price:'₹1499'}];
-        const rehelProducts = [{src:'zahida.5.jpeg', price:'₹699'}, {src:'rehel.1.jpeg', price:'₹699'}];
-        const prayermatProducts = [{src:'zahida.4.jpeg', price:'₹2599'}, {src:'prayer.1.jpeg', price:'₹2599'}];
-        const mirrorProducts = [{src:'zahida.2.jpeg', price:'₹699'}, {src:'mirror.1.jpeg', price:'₹699'}];
-        const plaqueProducts = [{src:'zahida.6.jpeg', price:'₹499'}, {src:'plaque.1.jpeg', price:'₹499'}];
-        const keychainProducts = [{src:'zahida.3.jpeg', price:'₹500'}, {src:'keychain.1.jpeg', price:'₹800'}];
+        // 1. Slider Logic
+        const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
+        let sliderIdx = 0;
+        setInterval(() => {
+            const hero = document.getElementById('hero-slider');
+            if(hero) {
+                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+                hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
+            }
+        }, 3000);
 
-        // Global Render Function
-        function renderCategory(title, products) {
-            const listContainer = document.getElementById('product-list');
+        // 2. Data Lists
+        const nikahProducts = [
+            {src: 'zahida.1.jpeg', price: '₹1499'}, {src: 'nikah.8.jpeg', price: '₹1499'},
+            {src: 'nikah.2.jpeg', price: '₹1499'}, {src: 'nikah.3.jpeg', price: '₹1499'},
+            {src: 'nikah.4.jpeg', price: '₹1299'}, {src: 'nikah.5.jpeg', price: '₹1299'},
+            {src: 'nikah.1.jpeg', price: '₹1299'}, {src: 'nikah.7.jpeg', price: '₹1499'}
+        ];
+
+        const rehelProducts = [
+            {src: 'zahida.5.jpeg', price: '₹699'}, {src: 'rehel.1.jpeg', price: '₹699'},
+            {src: 'rehel.2.jpeg', price: '₹699'}, {src: 'rehel.3.jpeg', price: '₹699'},
+            {src: 'rehel.4.jpeg', price: '₹699'}, {src: 'rehel.5.jpeg', price: '₹699'},
+            {src: 'rehel.6.jpeg', price: '₹699'}, {src: 'rehel.7.jpeg', price: '₹699'},
+            {src: 'rehel.8.jpeg', price: '₹699'}, {src: 'rehel.9.jpeg', price: '₹699'}
+        ];
+
+        const prayermatProducts = [
+            {src: 'zahida.4.jpeg', price: '₹2599'}, {src: 'prayer.1.jpeg', price: '₹2599'},
+            {src: 'prayer.2.jpeg', price: '₹2599'}, {src: 'prayer.3.jpeg', price: '₹2599'}
+        ];
+
+        const mirrorProducts = [
+            {src: 'zahida.2.jpeg', price: '₹699'}, {src: 'mirror.1.jpeg', price: '₹699'},
+            {src: 'mirror.2.jpeg', price: '₹699'}, {src: 'mirror.3.jpeg', price: '₹699'},
+            {src: 'mirror.4.jpeg', price: '₹699'}, {src: 'mirror.5.jpeg', price: '₹699'}
+        ];
+
+        const plaqueProducts = [
+            {src: 'zahida.6.jpeg', price: '₹499'}, {src: 'plaque.1.jpeg', price: '₹499'},
+            {src: 'plaque.2.jpeg', price: '₹499'}, {src: 'plaque.3.jpeg', price: '₹499'},
+            {src: 'plaque.4.jpeg', price: '₹499'}, {src: 'plaque.5.jpeg', price: '₹499'}
+        ];
+
+        const keychainProducts = [
+            {src: 'zahida.3.jpeg', price: '₹500'}, 
+            {src: 'keychain.1.jpeg', price: '₹800'},
+            {src: 'keychain.2.jpeg', price: '₹800'}, 
+            {src: 'keychain.3.jpeg', price: '₹800'},
+            {src: 'keychain.4.jpeg', price: '₹800'}, 
+            {src: 'keychain.5.jpeg', price: '₹800'}
+        ];
+
+        // 3. Display Logic
+        function openOverlay(title, products) {
+            const stack = document.getElementById('product-stack');
             const overlay = document.getElementById('gallery-overlay');
-            document.getElementById('cat-title').innerText = title;
-            
-            listContainer.innerHTML = ''; // Purana content saaf karein
+            const titleElement = document.getElementById('cat-title');
+
+            titleElement.innerText = title;
+            stack.innerHTML = ''; 
 
             products.forEach(item => {
-                listContainer.innerHTML += `
+                stack.innerHTML += `
                     <div class="product-item">
-                        <img src="${item.src}" alt="${title}" onerror="this.src='https://via.placeholder.com/400x400?text=Image+Coming+Soon'">
+                        <img src="${item.src}" onerror="this.src='https://via.placeholder.com/450x300?text=Image+Not+Found'">
                         <div class="product-info">
-                            <div class="price-tag">${item.price}</div>
+                            <h3>${title} Design</h3>
+                            <p class="price-tag">${item.price}</p>
                             <button class="wa-btn" onclick="sendWA('${title}', '${item.price}')">Order on WhatsApp</button>
                         </div>
                     </div>
@@ -147,27 +262,24 @@
             });
 
             overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Background scroll band
+            document.body.style.overflow = 'hidden';
         }
+
+        function showNikahNama() { openOverlay('Nikah Nama Box', nikahProducts); }
+        function showRehel() { openOverlay('Rehel', rehelProducts); }
+        function showPrayerMat() { openOverlay('Prayer Mat', prayermatProducts); }
+        function showMirror() { openOverlay('Nikah Mirror', mirrorProducts); }
+        function showPlaque() { openOverlay('Nikah Plaque', plaqueProducts); }
+        function showKeychain() { openOverlay('Keychains', keychainProducts); }
 
         function closeGallery() {
             document.getElementById('gallery-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Scroll wapas chalu
+            document.body.style.overflow = 'auto';
         }
 
         function sendWA(name, price) {
-            const msg = encodeURIComponent(`Hello ZS Creations, I want to order "${name}" for ${price}. Please share more details.`);
-            window.open(`https://wa.me/917478471531?text=${msg}`, '_blank');
+            window.open(`https://wa.me/917478471531?text=I want to order ${name} for ${price}`, '_blank');
         }
-
-        // Hero Slider
-        const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
-        let sliderIdx = 0;
-        setInterval(() => {
-            const hero = document.getElementById('hero-slider');
-            sliderIdx = (sliderIdx + 1) % sliderImgs.length;
-            hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
-        }, 3000);
     </script>
 </body>
 </html>
