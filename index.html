@@ -8,7 +8,6 @@
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; }
         
-        /* Navigation Bar */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -22,88 +21,91 @@
         }
         .brand { font-size: 1.4rem; font-weight: 800; color: #880e4f; letter-spacing: 1px; }
 
-        .main-layout {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .main-layout { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
-        /* Hero Slider */
+        /* Hero Banner with Menu Inside */
         .hero { 
-            padding: 100px 20px; text-align: center; position: relative; min-height: 400px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-size: cover; background-position: center; transition: background-image 1s ease-in-out; 
-            color: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px;
+            position: relative; 
+            min-height: 500px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; /* Content left, Menu right */
+            background-size: cover; 
+            background-position: center; 
+            transition: background-image 1s ease-in-out; 
+            color: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            margin-bottom: 40px;
+            padding: 40px;
             background-image: url('zahida.1.jpeg'); 
         }
-        .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 1; }
-        .hero h1, .hero p { position: relative; z-index: 2; margin: 10px 0; }
+        .hero::before { 
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            background: rgba(0,0,0,0.5); z-index: 1; 
+        }
 
-        /* Sidebar Menu Style (Positioned below Handcrafted with Love) */
-        .sidebar-menu {
-            background-color: #fbc6f0; 
+        /* Left Side Text */
+        .hero-content { position: relative; z-index: 2; flex: 1; }
+        .hero-content h1 { font-size: 3rem; margin: 0; }
+        .hero-content p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* Right Side Menu inside Banner */
+        .banner-menu {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.15); /* Glass effect */
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 15px;
-            margin: 0 auto 40px;
-            max-width: 800px; /* Centered layout under hero */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 250px;
         }
-        .sidebar-menu h2 {
-            font-family: 'cursive', 'Segoe UI';
-            font-size: 2.5rem;
-            color: #4a148c;
+        .banner-menu h2 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.2rem;
+            color: #fbc6f0;
             margin: 0 0 15px 0;
-            text-align: left;
         }
-        .menu-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .menu-list { list-style: none; padding: 0; margin: 0; }
+        .menu-list li { margin-bottom: 8px; }
         .menu-list a {
             text-decoration: none;
-            color: #333;
-            font-size: 1.1rem;
+            color: white;
+            font-size: 1.05rem;
             font-weight: 500;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: block;
         }
-        .menu-list a:hover {
-            color: #880e4f;
-            padding-left: 8px;
-        }
-        .contact-link {
-            color: #007bff !important;
-            text-decoration: underline !important;
-        }
+        .menu-list a:hover { color: #fbc6f0; transform: translateX(5px); }
 
-        /* Category Section */
+        /* Category Grid */
         .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; color: #4a148c; }
         .category-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; border: 1px solid #eee; transition: 0.3s; }
-        .category-card:hover { transform: translateY(-5px); border-color: #fbc6f0; }
-        .single-cat-img { height: 250px; width: 100%; overflow: hidden; }
+        .category-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
+        .category-card:hover { transform: translateY(-5px); }
+        .single-cat-img { height: 250px; overflow: hidden; }
         .single-cat-img img { width: 100%; height: 100%; object-fit: cover; }
         .cat-name { padding: 15px; text-align: center; font-weight: bold; background: #fce4ec; color: #880e4f; }
 
-        /* QR Footer */
-        .qr-footer { text-align: center; padding: 50px 20px; background: #fff; margin-top: 40px; border-radius: 15px; }
+        /* Footer & Overlay */
+        .qr-footer { text-align: center; padding: 50px 20px; margin-top: 40px; }
         .qr-card { display: inline-block; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .qr-code-img { width: 180px; height: 180px; border-radius: 10px; margin-bottom: 10px; }
-
-        /* Overlay */
+        .qr-code-img { width: 180px; border-radius: 10px; }
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
-        .gallery-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .gallery-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; margin-bottom: 20px; }
         .close-btn { padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
-        
         .stack-container { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .product-item { width: 100%; max-width: 450px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .product-item img { width: 100%; height: auto; display: block; }
+        .product-item img { width: 100%; }
         .product-info { padding: 20px; text-align: center; }
-        .price-tag { font-size: 1.4rem; font-weight: bold; color: #d4a373; margin: 10px 0; }
-        .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; min-height: auto; padding: 60px 20px; }
+            .banner-menu { width: 100%; margin-top: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -114,50 +116,52 @@
 
     <div class="main-layout">
         <div class="hero" id="hero-slider">
-            <h1>Exclusive Collection</h1>
-            <p>Handcrafted with Love</p>
-        </div>
+            <div class="hero-content">
+                <h1>Exclusive Collection</h1>
+                <p>Handcrafted with Love</p>
+            </div>
 
-        <div class="sidebar-menu">
-            <h2>ZS Creations</h2>
-            <ul class="menu-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#shop-section">All Products</a></li>
-                <li><a href="javascript:void(0)" onclick="showNikahNama()">Nikah Essentials</a></li>
-                <li><a href="javascript:void(0)" onclick="showRehel()">Rehel</a></li>
-                <li><a href="javascript:void(0)" onclick="showPrayerMat()">Prayer Mat</a></li>
-                <li><a href="javascript:void(0)" onclick="showMirror()">Mirror</a></li>
-                <li><a href="javascript:void(0)" onclick="showPlaque()">Plaque</a></li>
-                <li><a href="javascript:void(0)" onclick="showKeychain()">Keychains</a></li>
-                <li><a href="#contact-us" class="contact-link">Contact Us</a></li>
-            </ul>
+            <div class="banner-menu">
+                <h2>ZS Creations</h2>
+                <ul class="menu-list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#shop-section">All Products</a></li>
+                    <li><a href="javascript:void(0)" onclick="showNikahNama()">Nikah Essentials</a></li>
+                    <li><a href="javascript:void(0)" onclick="showRehel()">Rehel</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPrayerMat()">Prayer Mat</a></li>
+                    <li><a href="javascript:void(0)" onclick="showMirror()">Mirror</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPlaque()">Plaque</a></li>
+                    <li><a href="javascript:void(0)" onclick="showKeychain()">Keychains</a></li>
+                    <li><a href="#contact-us" style="color:#fbc6f0; text-decoration: underline;">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
 
         <h2 class="section-title" id="shop-section">Shop by Category</h2>
         
         <div class="category-container">
             <div class="category-card" onclick="showNikahNama()">
-                <div class="single-cat-img"><img src="zahida.1.jpeg" alt="Nikah Nama"></div>
+                <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
                 <div class="cat-name">Nikha Nama Box</div>
             </div>
             <div class="category-card" onclick="showRehel()">
-                <div class="single-cat-img"><img src="zahida.5.jpeg" alt="Rehel"></div>
+                <div class="single-cat-img"><img src="zahida.5.jpeg"></div>
                 <div class="cat-name">Rehel</div>
             </div>
             <div class="category-card" onclick="showPrayerMat()">
-                <div class="single-cat-img"><img src="zahida.4.jpeg" alt="Prayer Mat"></div>
+                <div class="single-cat-img"><img src="zahida.4.jpeg"></div>
                 <div class="cat-name">Prayer Mat</div>
             </div>
             <div class="category-card" onclick="showMirror()">
-                <div class="single-cat-img"><img src="zahida.2.jpeg" alt="Nikah Mirror"></div>
+                <div class="single-cat-img"><img src="zahida.2.jpeg"></div>
                 <div class="cat-name">Nikah Mirror</div>
             </div>
             <div class="category-card" onclick="showPlaque()">
-                <div class="single-cat-img"><img src="zahida.6.jpeg" alt="Nikah Plaque"></div>
+                <div class="single-cat-img"><img src="zahida.6.jpeg"></div>
                 <div class="cat-name">Nikah Plaque</div>
             </div>
             <div class="category-card" onclick="showKeychain()">
-                <div class="single-cat-img"><img src="zahida.3.jpeg" alt="Keychains"></div>
+                <div class="single-cat-img"><img src="zahida.3.jpeg"></div>
                 <div class="cat-name">Keychains</div>
             </div>
         </div>
@@ -166,7 +170,7 @@
     <div class="qr-footer" id="contact-us">
         <div class="qr-card">
             <h3>Contact Us</h3>
-            <img src="mizan.qr.2.jpeg" alt="WhatsApp QR" class="qr-code-img">
+            <img src="mizan.qr.2.jpeg" class="qr-code-img">
             <p>Scan to Pay or Chat</p>
         </div>
     </div>
@@ -184,10 +188,8 @@
         let sliderIdx = 0;
         setInterval(() => {
             const hero = document.getElementById('hero-slider');
-            if(hero) {
-                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
-                hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
-            }
+            sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+            hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
         }, 3000);
 
         const nikahProducts = [{src: 'zahida.1.jpeg', price: '₹1499'}, {src: 'nikah.8.jpeg', price: '₹1499'}, {src: 'nikah.2.jpeg', price: '₹1499'}, {src: 'nikah.3.jpeg', price: '₹1499'}, {src: 'nikah.4.jpeg', price: '₹1299'}, {src: 'nikah.5.jpeg', price: '₹1299'}, {src: 'nikah.1.jpeg', price: '₹1299'}, {src: 'nikah.7.jpeg', price: '₹1499'}];
@@ -206,10 +208,10 @@
             products.forEach(item => {
                 stack.innerHTML += `
                     <div class="product-item">
-                        <img src="${item.src}" onerror="this.src='https://via.placeholder.com/450x300?text=Image+Not+Found'">
+                        <img src="${item.src}">
                         <div class="product-info">
                             <h3>${title} Design</h3>
-                            <p class="price-tag">${item.price}</p>
+                            <p style="font-weight:bold; color:#d4a373;">${item.price}</p>
                             <button class="wa-btn" onclick="sendWA('${title}', '${item.price}')">Order on WhatsApp</button>
                         </div>
                     </div>`;
@@ -224,15 +226,8 @@
         function showMirror() { openOverlay('Nikah Mirror', mirrorProducts); }
         function showPlaque() { openOverlay('Nikah Plaque', plaqueProducts); }
         function showKeychain() { openOverlay('Keychains', keychainProducts); }
-
-        function closeGallery() {
-            document.getElementById('gallery-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function sendWA(name, price) {
-            window.open(`https://wa.me/917478471531?text=I want to order ${name} for ${price}`, '_blank');
-        }
+        function closeGallery() { document.getElementById('gallery-overlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function sendWA(n, p) { window.open(`https://wa.me/917478471531?text=I want to order ${n} for ${p}`, '_blank'); }
     </script>
 </body>
 </html>
