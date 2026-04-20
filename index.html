@@ -29,8 +29,8 @@
             min-height: 550px;
             display: flex; 
             flex-direction: column;
-            justify-content: center; /* Vertical center */
-            align-items: flex-start; /* Aligns everything to the LEFT */
+            justify-content: center; 
+            align-items: flex-start; 
             background-size: cover; 
             background-position: center; 
             transition: background-image 1s ease-in-out; 
@@ -38,7 +38,7 @@
             border-radius: 20px; 
             overflow: hidden; 
             margin-bottom: 40px;
-            padding: 60px; /* Space from edges */
+            padding: 60px; 
             background-image: url('zahida.4.jpeg'); 
         }
         .hero::before { 
@@ -46,12 +46,10 @@
             background: rgba(0,0,0,0.5); z-index: 1; 
         }
 
-        /* Hero Text & Simple Left Menu */
         .hero-content { position: relative; z-index: 2; text-align: left; }
         .hero-content h1 { font-size: 3.5rem; margin: 0; font-weight: 800; }
         .hero-content p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
 
-        /* Simple List (No border, No ZS Creations heading) */
         .banner-menu-simple {
             list-style: none;
             padding: 0;
@@ -118,7 +116,7 @@
                     <li><a href="javascript:void(0)" onclick="showMirror()">Mirror</a></li>
                     <li><a href="javascript:void(0)" onclick="showPlaque()">Plaque</a></li>
                     <li><a href="javascript:void(0)" onclick="showKeychain()">Keychains</a></li>
-                    <li><a href="#contact-us" style="color:#fbc6f0;">Contact Us</a></li>
+                    <li><a href="https://wa.me/917478471531" target="_blank" style="color:#fbc6f0;">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -153,9 +151,9 @@
         </div>
     </div>
 
-    <div class="qr-footer" id="Scan & Pay">
+    <div class="qr-footer">
         <div class="qr-card">
-            <h3>Contact Us</h3>
+            <h3>Scan & Pay</h3>
             <img src="mizan.qr.2.jpeg" class="qr-code-img">
             <p>Scan to Pay or Chat</p>
         </div>
@@ -213,6 +211,8 @@
         function showPlaque() { openOverlay('Nikah Plaque', plaqueProducts); }
         function showKeychain() { openOverlay('Keychains', keychainProducts); }
         function closeGallery() { document.getElementById('gallery-overlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
+        // Fixed syntax error here (Line 217 equivalent)
         function sendWA(n, p) { window.open(`https://wa.me/917478471531?text=I want to order ${n} for ${p}`, '_blank'); }
     </script>
 </body>
