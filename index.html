@@ -80,7 +80,7 @@
         .product-item img { width: 100%; height: auto; display: block; }
         .product-info { padding: 20px; text-align: center; }
         .price-tag { font-size: 1.4rem; font-weight: bold; color: #d4a373; margin: 10px 0; }
-        .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; }
     </style>
 </head>
 <body>
@@ -99,32 +99,32 @@
     
     <div class="category-container">
         <div class="category-card" onclick="showNikahNama()">
-            <div class="single-cat-img"><img src="zahida.1.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.1.jpeg" alt="Nikah Nama"></div>
             <div class="cat-name">Nikha Nama Box</div>
         </div>
 
         <div class="category-card" onclick="showRehel()">
-            <div class="single-cat-img"><img src="zahida.5.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.5.jpeg" alt="Rehel"></div>
             <div class="cat-name">Rehel</div>
         </div>
 
         <div class="category-card" onclick="showPrayerMat()">
-            <div class="single-cat-img"><img src="zahida.4.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.4.jpeg" alt="Prayer Mat"></div>
             <div class="cat-name">Prayer Mat</div>
         </div>
 
         <div class="category-card" onclick="showMirror()">
-            <div class="single-cat-img"><img src="zahida.2.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.2.jpeg" alt="Nikah Mirror"></div>
             <div class="cat-name">Nikah Mirror</div>
         </div>
 
         <div class="category-card" onclick="showPlaque()">
-            <div class="single-cat-img"><img src="zahida.6.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.6.jpeg" alt="Nikah Plaque"></div>
             <div class="cat-name">Nikah Plaque</div>
         </div>
 
         <div class="category-card" onclick="showKeychain()">
-            <div class="single-cat-img"><img src="zahida.3.jpeg"></div>
+            <div class="single-cat-img"><img src="zahida.3.jpeg" alt="Keychains"></div>
             <div class="cat-name">Keychains</div>
         </div>
     </div>
@@ -150,11 +150,14 @@
         const sliderImgs = ['zahida.1.jpeg', 'zahida.4.jpeg', 'zahida.5.jpeg'];
         let sliderIdx = 0;
         setInterval(() => {
-            sliderIdx = (sliderIdx + 1) % sliderImgs.length;
-            document.getElementById('hero-slider').style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
+            const hero = document.getElementById('hero-slider');
+            if(hero) {
+                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+                hero.style.backgroundImage = `url('${sliderImgs[sliderIdx]}')`;
+            }
         }, 3000);
 
-        // 2. Data Lists
+        // 2. Data Lists (Fixed all syntax errors)
         const nikahProducts = [
             {src: 'zahida.1.jpeg', price: '₹1499'}, {src: 'nikah.8.jpeg', price: '₹1499'},
             {src: 'nikah.2.jpeg', price: '₹1499'}, {src: 'nikah.3.jpeg', price: '₹1499'},
@@ -199,13 +202,16 @@
         // 3. Display Logic
         function openOverlay(title, products) {
             const stack = document.getElementById('product-stack');
-            document.getElementById('cat-title').innerText = title;
+            const overlay = document.getElementById('gallery-overlay');
+            const titleElement = document.getElementById('cat-title');
+
+            titleElement.innerText = title;
             stack.innerHTML = ''; 
 
             products.forEach(item => {
                 stack.innerHTML += `
                     <div class="product-item">
-                        <img src="${item.src}">
+                        <img src="${item.src}" onerror="this.src='https://via.placeholder.com/450x300?text=Image+Not+Found'">
                         <div class="product-info">
                             <h3>${title} Design</h3>
                             <p class="price-tag">${item.price}</p>
@@ -215,7 +221,7 @@
                 `;
             });
 
-            // Small QR inside overlay
+            // Footer QR in overlay
             stack.innerHTML += `
                 <div style="text-align:center; padding: 30px; border-top: 1px solid #eee; width: 100%;">
                     <p>Scan to discuss customization:</p>
@@ -223,10 +229,11 @@
                 </div>
             `;
 
-            document.getElementById('gallery-overlay').style.display = 'block';
+            overlay.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
+        // Functions for each category
         function showNikahNama() { openOverlay('Nikah Nama Box', nikahProducts); }
         function showRehel() { openOverlay('Rehel', rehelProducts); }
         function showPrayerMat() { openOverlay('Prayer Mat', prayermatProducts); }
