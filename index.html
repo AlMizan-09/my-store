@@ -23,13 +23,14 @@
 
         .main-layout { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
-        /* Hero Banner with Menu Inside */
+        /* Hero Banner */
         .hero { 
             position: relative; 
-            min-height: 500px;
+            min-height: 550px;
             display: flex; 
-            align-items: center; 
-            justify-content: space-between; /* Content left, Menu right */
+            flex-direction: column;
+            justify-content: center; /* Vertical center */
+            align-items: flex-start; /* Aligns everything to the LEFT */
             background-size: cover; 
             background-position: center; 
             transition: background-image 1s ease-in-out; 
@@ -37,7 +38,7 @@
             border-radius: 20px; 
             overflow: hidden; 
             margin-bottom: 40px;
-            padding: 40px;
+            padding: 60px; /* Space from edges */
             background-image: url('zahida.1.jpeg'); 
         }
         .hero::before { 
@@ -45,39 +46,27 @@
             background: rgba(0,0,0,0.5); z-index: 1; 
         }
 
-        /* Left Side Text */
-        .hero-content { position: relative; z-index: 2; flex: 1; }
-        .hero-content h1 { font-size: 3rem; margin: 0; }
-        .hero-content p { font-size: 1.2rem; opacity: 0.9; }
+        /* Hero Text & Simple Left Menu */
+        .hero-content { position: relative; z-index: 2; text-align: left; }
+        .hero-content h1 { font-size: 3.5rem; margin: 0; font-weight: 800; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
 
-        /* Right Side Menu inside Banner */
-        .banner-menu {
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.15); /* Glass effect */
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 250px;
+        /* Simple List (No border, No ZS Creations heading) */
+        .banner-menu-simple {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .banner-menu h2 {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 2.2rem;
-            color: #fbc6f0;
-            margin: 0 0 15px 0;
-        }
-        .menu-list { list-style: none; padding: 0; margin: 0; }
-        .menu-list li { margin-bottom: 8px; }
-        .menu-list a {
+        .banner-menu-simple li { margin-bottom: 12px; }
+        .banner-menu-simple a {
             text-decoration: none;
             color: white;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 500;
             transition: 0.3s;
-            display: block;
+            display: inline-block;
         }
-        .menu-list a:hover { color: #fbc6f0; transform: translateX(5px); }
+        .banner-menu-simple a:hover { color: #fbc6f0; transform: translateX(8px); }
 
         /* Category Grid */
         .section-title { text-align: center; margin: 40px 0 20px; font-size: 2rem; color: #4a148c; }
@@ -89,9 +78,10 @@
         .cat-name { padding: 15px; text-align: center; font-weight: bold; background: #fce4ec; color: #880e4f; }
 
         /* Footer & Overlay */
-        .qr-footer { text-align: center; padding: 50px 20px; margin-top: 40px; }
+        .qr-footer { text-align: center; padding: 50px 20px; }
         .qr-card { display: inline-block; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         .qr-code-img { width: 180px; border-radius: 10px; }
+        
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; overflow-y: auto; display: none; padding: 20px; }
         .gallery-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; margin-bottom: 20px; }
         .close-btn { padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
@@ -101,10 +91,9 @@
         .product-info { padding: 20px; text-align: center; }
         .wa-btn { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; min-height: auto; padding: 60px 20px; }
-            .banner-menu { width: 100%; margin-top: 30px; }
+            .hero { padding: 40px 30px; min-height: 500px; }
+            .hero-content h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -119,11 +108,8 @@
             <div class="hero-content">
                 <h1>Exclusive Collection</h1>
                 <p>Handcrafted with Love</p>
-            </div>
 
-            <div class="banner-menu">
-                <h2>ZS Creations</h2>
-                <ul class="menu-list">
+                <ul class="banner-menu-simple">
                     <li><a href="#">Home</a></li>
                     <li><a href="#shop-section">All Products</a></li>
                     <li><a href="javascript:void(0)" onclick="showNikahNama()">Nikah Essentials</a></li>
@@ -132,7 +118,7 @@
                     <li><a href="javascript:void(0)" onclick="showMirror()">Mirror</a></li>
                     <li><a href="javascript:void(0)" onclick="showPlaque()">Plaque</a></li>
                     <li><a href="javascript:void(0)" onclick="showKeychain()">Keychains</a></li>
-                    <li><a href="#contact-us" style="color:#fbc6f0; text-decoration: underline;">Contact Us</a></li>
+                    <li><a href="#contact-us" style="color:#fbc6f0;">Contact Us</a></li>
                 </ul>
             </div>
         </div>
